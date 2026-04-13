@@ -88,6 +88,10 @@
     "WORKSPACE_ALREADY_EXISTS": "已存在同名工作区",
     "FOLDER_NAME_REQUIRED": "文件夹名称不能为空",
     "LOCATION_REQUIRED": "位置不能为空",
+    "NAME_REQUIRED_GENERIC": "名称不能为空。",
+    "NAME_MAX_255": "名称不能超过 255 个字符。",
+    "NAME_RESERVED_DEVICE": "名称不能是系统保留设备名。",
+    "NAME_INVALID_CHARACTER": "名称中不能包含特殊字符。非法字符：“{{char}}”。",
     "INVALID_FORMAT": "文件格式无效"
   },
   "SUPPORT": {
@@ -506,7 +510,50 @@
     "EMPTY_STATE_DESCRIPTION": "创建你的第一个 Collection，或打开已有 Collection 以开始使用。"
   },
   "COOKIES": {
-    "MODIFY_TITLE": "修改 Cookie"
+    "ADD_TITLE": "添加 Cookie",
+    "MODIFY_TITLE": "修改 Cookie",
+    "EDIT_RAW": "编辑原始文本",
+    "SET_COOKIE_STRING": "Set-Cookie 字符串",
+    "RAW_HELP": "对于已有 Cookie，键、路径和域这三个属性不可修改",
+    "RAW_PLACEHOLDER": "key=value; key2=value2",
+    "DOMAIN": "域",
+    "PATH": "路径",
+    "KEY": "键",
+    "EXPIRATION": "过期时间",
+    "SECURE": "仅安全连接",
+    "HTTP_ONLY": "仅 HTTP",
+    "KEY_REQUIRED": "键不能为空",
+    "VALUE_REQUIRED": "值不能为空",
+    "DOMAIN_REQUIRED": "域不能为空",
+    "EXPIRATION_FUTURE": "过期时间必须晚于当前时间",
+    "MODIFY_SUCCESS": "Cookie 修改成功",
+    "MODIFY_ERROR": "修改 Cookie 时出错",
+    "ADD_SUCCESS": "Cookie 添加成功",
+    "ADD_ERROR": "添加 Cookie 时出错",
+    "INVALID_COOKIE_STRING": "请输入有效的 Cookie 字符串",
+    "PARSE_ERROR": "解析 Cookie 字符串时出错"
+  },
+  "COLLECTION_ACTIONS": {
+    "REQUEST_SAVED": "请求保存成功",
+    "REQUEST_SAVE_FAILED": "请求保存失败！",
+    "REQUESTS_SAVE_FAILED": "批量保存请求失败！",
+    "COLLECTION_SETTINGS_SAVED": "Collection 设置保存成功",
+    "COLLECTION_SETTINGS_SAVE_FAILED": "保存 Collection 设置失败！",
+    "FOLDER_SETTINGS_SAVED": "文件夹设置保存成功",
+    "FOLDER_SETTINGS_SAVE_FAILED": "保存文件夹设置失败！",
+    "REQUEST_MADE": "请求发送成功",
+    "SOMETHING_WENT_WRONG": "出了点问题！",
+    "CREATE_FOLDER_FAILED": "创建新文件夹失败！",
+    "RENAME_ITEM_FAILED": "重命名条目失败",
+    "ITEM_RENAMED": "条目重命名成功",
+    "MOVE_FOLDER_FORMAT_UNSUPPORTED": "不支持在不同格式的 Collection 之间移动文件夹",
+    "PROCESS_ENV_READONLY": "进程环境变量不可编辑",
+    "RUNTIME_ENV_READONLY": "运行时变量由脚本设置，不能直接编辑",
+    "VARIABLE_UPDATED": "变量“{{variableName}}”已更新",
+    "VARIABLE_UPDATE_FAILED": "更新变量失败：{{message}}",
+    "COLLECTION_ALREADY_OPEN": "Collection 已经打开",
+    "COLLECTION_ADDED_TO_WORKSPACE": "Collection 已添加到工作区",
+    "ADD_COLLECTION_TO_WORKSPACE_FAILED": "将 Collection 添加到工作区失败"
   },
   "ELECTRON_MENU": {
     "ACTUAL_SIZE": "实际大小"

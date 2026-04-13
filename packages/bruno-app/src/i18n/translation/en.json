@@ -88,6 +88,10 @@
     "WORKSPACE_ALREADY_EXISTS": "A workspace with this name already exists",
     "FOLDER_NAME_REQUIRED": "folder name is required",
     "LOCATION_REQUIRED": "Location is required",
+    "NAME_REQUIRED_GENERIC": "Name cannot be empty.",
+    "NAME_MAX_255": "Name cannot exceed 255 characters.",
+    "NAME_RESERVED_DEVICE": "Name cannot be a reserved device name.",
+    "NAME_INVALID_CHARACTER": "Special characters aren't allowed in the name. Invalid character “{{char}}”.",
     "INVALID_FORMAT": "invalid format"
   },
   "SUPPORT": {
@@ -506,7 +510,50 @@
     "EMPTY_STATE_DESCRIPTION": "Create your first collection or open an existing one to get started."
   },
   "COOKIES": {
-    "MODIFY_TITLE": "Modify Cookie"
+    "ADD_TITLE": "Add Cookie",
+    "MODIFY_TITLE": "Modify Cookie",
+    "EDIT_RAW": "Edit Raw",
+    "SET_COOKIE_STRING": "Set-Cookie String",
+    "RAW_HELP": "Key, Path, and Domain are immutable properties and cannot be modified for existing cookies",
+    "RAW_PLACEHOLDER": "key=value; key2=value2",
+    "DOMAIN": "Domain",
+    "PATH": "Path",
+    "KEY": "Key",
+    "EXPIRATION": "Expiration",
+    "SECURE": "Secure",
+    "HTTP_ONLY": "HTTP Only",
+    "KEY_REQUIRED": "Key is required",
+    "VALUE_REQUIRED": "Value is required",
+    "DOMAIN_REQUIRED": "Domain is required",
+    "EXPIRATION_FUTURE": "Expiration date must be in the future",
+    "MODIFY_SUCCESS": "Cookie modified successfully",
+    "MODIFY_ERROR": "An error occurred while modifying cookie",
+    "ADD_SUCCESS": "Cookie added successfully",
+    "ADD_ERROR": "An error occurred while adding cookie",
+    "INVALID_COOKIE_STRING": "Please enter a valid cookie string",
+    "PARSE_ERROR": "An error occurred while parsing cookie string"
+  },
+  "COLLECTION_ACTIONS": {
+    "REQUEST_SAVED": "Request saved successfully",
+    "REQUEST_SAVE_FAILED": "Failed to save request!",
+    "REQUESTS_SAVE_FAILED": "Failed to save requests!",
+    "COLLECTION_SETTINGS_SAVED": "Collection Settings saved successfully",
+    "COLLECTION_SETTINGS_SAVE_FAILED": "Failed to save collection settings!",
+    "FOLDER_SETTINGS_SAVED": "Folder Settings saved successfully",
+    "FOLDER_SETTINGS_SAVE_FAILED": "Failed to save folder settings!",
+    "REQUEST_MADE": "Request made successfully",
+    "SOMETHING_WENT_WRONG": "Something went wrong!",
+    "CREATE_FOLDER_FAILED": "Failed to create a new folder!",
+    "RENAME_ITEM_FAILED": "Failed to rename the item name",
+    "ITEM_RENAMED": "Item renamed successfully",
+    "MOVE_FOLDER_FORMAT_UNSUPPORTED": "Moving folders between collections with different formats is not supported",
+    "PROCESS_ENV_READONLY": "Process environment variables cannot be edited",
+    "RUNTIME_ENV_READONLY": "Runtime variables are set by scripts and cannot be edited",
+    "VARIABLE_UPDATED": "Variable “{{variableName}}” updated",
+    "VARIABLE_UPDATE_FAILED": "Failed to update variable: {{message}}",
+    "COLLECTION_ALREADY_OPEN": "Collection is already opened",
+    "COLLECTION_ADDED_TO_WORKSPACE": "Collection added to workspace",
+    "ADD_COLLECTION_TO_WORKSPACE_FAILED": "Failed to add collection to workspace"
   },
   "ELECTRON_MENU": {
     "ACTUAL_SIZE": "Actual Size"
