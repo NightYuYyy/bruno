@@ -49,9 +49,11 @@
     "GET_STARTED": "开始体验",
     "BROWSE": "浏览",
     "NAME": "名称",
+    "VALUE": "值",
     "LOCATION": "位置",
     "FILE_FORMAT": "文件格式",
     "CANCEL": "取消",
+    "SAVE": "保存",
     "CREATE": "创建",
     "CLOSE": "关闭",
     "IMPORT": "导入",
@@ -254,5 +256,425 @@
   },
   "SEARCH": {
     "REQUESTS_PLACEHOLDER": "搜索请求…"
+  },
+  "GIT": {
+    "NOT_FOUND_MODAL": {
+      "TITLE": "未找到 Git",
+      "DESCRIPTION": "未在你的系统中检测到 Git，请安装 Git 后继续。",
+      "DOWNLOAD_PROMPT": "你可以在这里下载适用于 {{osName}} 的 Git：",
+      "DOWNLOAD_LINK": "下载适用于 {{osName}} 的 Git"
+    }
+  },
+  "ERRORS": {
+    "IPC_ERROR_TITLE": "错误"
+  },
+  "CONFIRM_REQUEST_CLOSE": {
+    "TITLE": "未保存的更改",
+    "SAVE_AND_CLOSE": "保存并关闭",
+    "CLOSE_WITHOUT_SAVING": "不保存直接关闭",
+    "HOLD_ON": "稍等..",
+    "UNSAVED_CHANGES": "你在 {{itemType}} 中有未保存的更改",
+    "DONT_SAVE": "不保存",
+    "ITEM_TYPE_EXAMPLE": "示例",
+    "ITEM_TYPE_REQUEST": "请求"
+  },
+  "RESPONSE_PANE": {
+    "SOMETHING_WENT_WRONG": "出了点问题",
+    "AN_ERROR_OCCURRED": "发生错误！",
+    "LOADING_VIDEO": "视频加载中...",
+    "NO_METADATA_RECEIVED": "未收到元数据",
+    "NO_TRAILERS_RECEIVED": "未收到 Trailers",
+    "PLACEHOLDER": {
+      "SEND_REQUEST": "发送请求",
+      "NEW_REQUEST": "新建请求",
+      "EDIT_ENVIRONMENTS": "编辑环境"
+    },
+    "FILTER": {
+      "FILTER_WITH_JSONPATH": "使用 JSONPath 过滤",
+      "FILTER_WITH_XPATH": "使用 XPath 过滤"
+    },
+    "JSON_PREVIEW": {
+      "CANNOT_PREVIEW_AS_JSON": "无法预览为 JSON",
+      "INVALID_JSON_FORMAT": "无效的 JSON 格式：{{message}}",
+      "DATA_NULL_OR_UNDEFINED": "数据为 null 或 undefined，期望有效的 JSON 对象或数组。",
+      "DATA_NOT_OBJECT": "数据无法渲染为 JSON 树，期望 JSON 对象或数组。",
+      "INVALID_INPUT": "无效输入，期望 JSON 对象、数组或有效的 JSON 字符串。"
+    },
+    "RESPONSE_CLEAR": {
+      "CLEAR_RESPONSE": "清除响应"
+    },
+    "RESPONSE_PANE_ACTIONS": {
+      "MORE_ACTIONS": "更多操作",
+      "COPY_RESPONSE": "复制响应",
+      "SAVE_RESPONSE": "保存响应",
+      "DOWNLOAD_RESPONSE": "下载响应",
+      "CLEAR_RESPONSE": "清除响应",
+      "CHANGE_LAYOUT": "切换布局"
+    },
+    "RUNNER_TIMELINE": {
+      "OAUTH2_CALLS": "OAuth2.0 调用",
+      "NO_DEBUG_INFO": "暂无调试信息。"
+    },
+    "SCRIPT_ERROR_ICON": {
+      "SCRIPT_EXECUTION_ERROR": "脚本执行出错"
+    },
+    "SKIPPED_REQUEST": {
+      "REQUEST_SKIPPED": "请求已跳过"
+    },
+    "TEST_RESULTS_LABEL": {
+      "TESTS": "测试"
+    },
+    "TIMELINE": {
+      "REQUEST": "请求",
+      "RESPONSE": "响应",
+      "NETWORK_LOGS": "网络日志",
+      "BODY": "Body",
+      "NO_BODY_FOUND": "未找到 Body",
+      "HEADERS": "Headers",
+      "NO_HEADERS_FOUND": "未找到 Headers"
+    }
+  },
+  "REQUEST_PANE": {
+    "QUERY": "查询",
+    "PATH": "路径",
+    "BULK_EDIT": "批量编辑",
+    "VARIABLES": "变量",
+    "NO_GRPC_MESSAGES": "暂无 gRPC 消息",
+    "ADD_MESSAGE": "添加消息",
+    "GENERATE_GRPCURL_COMMAND": "生成 gRPCurl 命令",
+    "NO_WS_MESSAGES": "暂无 WebSocket 消息",
+    "MULTIPLE_OPERATIONS_DETECTED": "检测到多个操作",
+    "QUERY_BUILDER_SINGLE_OP": "Query Builder 每次只支持单个操作，请将多个操作合并为一个以同步。",
+    "TIMEOUT": "超时",
+    "KEEP_ALIVE_INTERVAL": "保活间隔",
+    "TIMEOUT_MS": "超时时间（毫秒）",
+    "KEEP_ALIVE_DESC": "通过定期向服务器发送 ping 请求来保持 WebSocket 连接（单位：毫秒）",
+    "KEEP_ALIVE_ZERO": "0（零）= 关闭"
+  },
+  "AUTH": {
+    "NO_AUTH": "无认证",
+    "INHERITED_FROM": "认证继承自 {{name}}：",
+    "GRPC_INHERITED_NOT_SUPPORTED": "继承的认证不被 gRPC 支持，将使用无认证。",
+    "WS_OAUTH2_NOT_SUPPORTED": "OAuth 2 暂不支持 WebSockets，将使用无认证。",
+    "WS_OAUTH_INHERITED_NOT_SUPPORTED": "OAuth {{oauthVersion}} 暂不支持 WebSockets，将使用无认证。",
+    "WS_INHERITED_NOT_SUPPORTED": "继承的认证不被 WebSockets 支持，将使用无认证。"
+  },
+  "COLLECTION_SETTINGS": {
+    "AUTH": {
+      "COLLECTION_AUTH_DESCRIPTION": "为整个 Collection 配置认证。这将应用于所有在认证标签页中选择了 {{inherit}} 选项的请求。",
+      "INHERIT": "继承",
+      "AUTH_TAB": "认证",
+      "SAVE": "保存",
+      "KEY": "键",
+      "VALUE": "值",
+      "ADD_TO": "添加到",
+      "HEADER": "请求头",
+      "QUERY_PARAMS": "查询参数",
+      "USERNAME": "用户名",
+      "PASSWORD": "密码",
+      "TOKEN": "令牌",
+      "ACCESS_KEY_ID": "访问密钥 ID",
+      "SECRET_ACCESS_KEY": "访问密钥密文",
+      "SESSION_TOKEN": "会话令牌",
+      "SERVICE": "服务",
+      "REGION": "区域",
+      "PROFILE_NAME": "配置名称",
+      "DOMAIN": "域"
+    },
+    "OVERVIEW": {
+      "LOCATION": "位置",
+      "ENVIRONMENTS": "环境",
+      "COLLECTION_ENVIRONMENTS_ONE": "{{count}} 个 Collection 环境",
+      "COLLECTION_ENVIRONMENTS_OTHER": "{{count}} 个 Collection 环境",
+      "GLOBAL_ENVIRONMENTS_ONE": "{{count}} 个全局环境",
+      "GLOBAL_ENVIRONMENTS_OTHER": "{{count}} 个全局环境",
+      "REQUESTS": "请求",
+      "REQUESTS_LOADING": "已加载 {{loaded}} / {{total}} 个请求",
+      "REQUESTS_COUNT_ONE": "Collection 中共 {{count}} 个请求",
+      "REQUESTS_COUNT_OTHER": "Collection 中共 {{count}} 个请求",
+      "SHARE": "共享",
+      "SHARE_COLLECTION": "共享 Collection",
+      "DOCUMENTATION": "文档",
+      "GENERATE_DOCS": "生成文档",
+      "REQUESTS_NOT_LOADED_TITLE": "以下请求未能加载",
+      "PATHNAME": "路径名",
+      "SIZE": "大小"
+    },
+    "VARS": {
+      "PRE_REQUEST": "请求前",
+      "POST_RESPONSE": "响应后",
+      "SAVE": "保存",
+      "NAME": "名称",
+      "VALUE": "值",
+      "EXPR": "表达式",
+      "VARIABLE_INVALID_CHARS": "变量名包含非法字符，只能使用字母、数字、\"-\"、\"_\"、\".\""
+    },
+    "CLIENT_CERT": {
+      "DESCRIPTION": "添加用于特定域名的客户端证书。",
+      "CLIENT_CERTIFICATES": "客户端证书",
+      "NO_CERTIFICATES": "暂无客户端证书",
+      "ADD_CLIENT_CERTIFICATE": "添加客户端证书",
+      "DOMAIN": "域名",
+      "TYPE": "类型",
+      "CERT": "Cert",
+      "PFX": "PFX",
+      "CERT_FILE": "证书文件",
+      "KEY_FILE": "密钥文件",
+      "PFX_FILE": "PFX 文件",
+      "PASSPHRASE": "密码短语",
+      "ADD": "添加",
+      "SAVE": "保存",
+      "DOMAIN_REQUIRED": "域名不能为空"
+    },
+    "PROTOBUF": {
+      "PROTO_FILES": "Proto 文件（{{count}}）",
+      "PROTO_FILES_TOOLTIP": "请将 proto 文件保存在 Collection 文件夹或对应的 Git 仓库中，以确保在共享 Collection 时路径依然有效。",
+      "INVALID_FILES_MESSAGE": "部分 proto 文件无法找到，请使用替换选项更新其路径。",
+      "FILE_HEADER": "文件",
+      "PATH_HEADER": "路径",
+      "ACTIONS_HEADER": "操作",
+      "NO_PROTO_FILES": "暂无 proto 文件",
+      "ADD_PROTO_FILE": "+ 添加 Proto 文件",
+      "REPLACE_FILE_TITLE": "替换文件",
+      "REMOVE_FILE_TITLE": "移除文件",
+      "IMPORT_PATHS": "导入路径（{{count}}）",
+      "IMPORT_PATHS_TOOLTIP": "添加包含待导入 proto 文件的目录，这些路径用于解析 proto 文件中的 import 语句。",
+      "INVALID_IMPORT_PATHS_MESSAGE": "部分导入路径在指定位置无法找到。",
+      "DIRECTORY_HEADER": "目录",
+      "NO_IMPORT_PATHS": "暂无导入路径",
+      "ADD_IMPORT_PATH": "+ 添加导入路径",
+      "ENABLE_IMPORT_PATH": "启用此导入路径",
+      "DISABLE_IMPORT_PATH": "禁用此导入路径",
+      "REPLACE_DIRECTORY_TITLE": "替换目录",
+      "REMOVE_IMPORT_PATH_TITLE": "移除导入路径",
+      "SAVE": "保存"
+    }
+  },
+  "PREFERENCES": {
+    "GENERAL": "通用",
+    "THEMES": "主题",
+    "DISPLAY": "显示",
+    "PROXY": "代理",
+    "KEYBINDINGS": "快捷键",
+    "CACHE": "缓存",
+    "SUPPORT": "支持",
+    "BETA": "Beta",
+    "DISPLAY_SECTION_HEADER": "显示"
+  },
+  "WORKSPACE": {
+    "REMOVE_WORKSPACE": "移除工作区",
+    "REMOVING": "正在移除...",
+    "REMOVE": "移除",
+    "REMOVE_ERROR": "移除工作区时出错",
+    "CONFIRM_REMOVE": "确定要移除工作区",
+    "STILL_AVAILABLE": "工作区仍会保留在文件系统中，之后可以重新打开。"
+  },
+  "REQUEST_TABS": {
+    "COLLECTION": "Collection",
+    "OVERVIEW": "概览",
+    "FOLDER": "文件夹",
+    "VARIABLES": "变量",
+    "RUNNER": "运行器",
+    "ENVIRONMENTS": "环境",
+    "GLOBAL_ENVIRONMENTS": "全局环境",
+    "PREFERENCES": "偏好设置",
+    "OPENAPI": "OpenAPI",
+    "API_SPEC": "API 规范",
+    "BETA": "Beta"
+  },
+  "REQUEST_IS_LOADING": {
+    "FILE_INFO": "文件信息",
+    "NAME": "名称：",
+    "PATH": "路径：",
+    "SIZE": "大小：",
+    "LOADING": "加载中..."
+  },
+  "OPENAPI_SYNC": {
+    "DISCONNECT_SYNC": "断开同步",
+    "DISCONNECT_CONFIRM": "确定要断开 OpenAPI 同步吗？",
+    "DISCONNECT_NOTE": "这只会断开同步配置，你的 Collection 不会受影响。",
+    "DISCONNECT": "断开",
+    "UNABLE_TO_CHECK_UPDATES": "无法检查更新",
+    "FIX_CONNECTION": "请修复上方的连接问题后再试。",
+    "NO_UPDATES_FROM_SPEC": "规范暂无更新",
+    "NO_UPDATES_DESC": "自上次同步以来，规范中的接口尚未更新。你可以恢复规范文件以追踪 Collection 的本地变更。",
+    "RESTORE_SPEC_FILE": "恢复规范文件",
+    "UPDATE_CONNECTION_SETTINGS": "更新连接设置",
+    "SOURCE_FILE_NOT_FOUND": "在 {{sourceUrl}} 未找到源文件",
+    "INVALID_OPENAPI_SPEC": "无效的 OpenAPI 规范",
+    "SPEC_UPDATED": "OpenAPI 规范已更新",
+    "CHECKED": "已检查",
+    "ENDPOINTS_UPDATED_one": "{{count}} 个接口已更新",
+    "ENDPOINTS_UPDATED_other": "{{count}} 个接口已更新",
+    "ENDPOINTS_ADDED_one": "{{count}} 个接口已添加",
+    "ENDPOINTS_ADDED_other": "{{count}} 个接口已添加",
+    "ENDPOINTS_REMOVED_one": "{{count}} 个接口已移除",
+    "ENDPOINTS_REMOVED_other": "{{count}} 个接口已移除"
+  },
+  "GRPC": {
+    "FROM_COLLECTION_SETTINGS": "来自 Collection 设置",
+    "SOME_IMPORT_PATHS_NOT_FOUND": "部分导入路径无法找到。",
+    "MANAGE_IMPORT_PATHS": "管理导入路径",
+    "NO_IMPORT_PATHS_CONFIGURED": "Collection 设置中未配置任何导入路径",
+    "BROWSE_FOR_IMPORT_PATH": "浏览导入路径",
+    "SOME_PROTO_FILES_NOT_FOUND": "部分 proto 文件无法找到。",
+    "MANAGE_PROTO_FILES": "管理 proto 文件",
+    "NO_PROTO_FILES_CONFIGURED": "Collection 设置中未配置任何 proto 文件",
+    "BROWSE_FOR_PROTO_FILE": "浏览 proto 文件",
+    "PROTO_FILES": "Proto 文件",
+    "IMPORT_PATHS": "导入路径",
+    "MODE": "模式",
+    "PROTO_FILE": "Proto 文件",
+    "REFLECTION": "反射",
+    "USING_REFLECTION": "使用反射",
+    "SELECT_PROTO_FILE": "选择 Proto 文件",
+    "USING_SERVER_REFLECTION": "使用服务器反射发现 gRPC 方法。",
+    "GRPC_SERVER_ERROR": "gRPC 服务器错误",
+    "CLEAR_TIMELINE": "清除时间线",
+    "BROWSE_PROTO_FILE_ERROR": "浏览 proto 文件失败：{{message}}",
+    "ADD_PROTO_FILE_ERROR": "添加 proto 文件失败：{{message}}",
+    "PROTO_FILE_ALREADY_EXISTS": "该 proto 文件已存在于 Collection 设置中",
+    "PROTO_FILE_ADDED": "已将 proto 文件添加到 Collection",
+    "PROTO_FILE_NOT_FOUND": "未找到 proto 文件",
+    "BROWSE_IMPORT_DIRECTORY_ERROR": "浏览导入目录失败：{{message}}",
+    "ADD_IMPORT_PATH_ERROR": "添加导入路径失败：{{message}}",
+    "IMPORT_PATH_ADDED": "已将导入路径添加到 Collection",
+    "TOGGLE_IMPORT_PATH_ERROR": "切换导入路径失败：{{message}}",
+    "IMPORT_PATH_ENABLED": "导入路径已启用",
+    "IMPORT_PATH_DISABLED": "导入路径已禁用"
+  },
+  "NETWORK_ERROR": {
+    "TITLE": "网络错误"
+  },
+  "API_SPEC_PANEL": {
+    "API_DESIGNER": "API 设计器",
+    "API_SPEC_NOT_FOUND": "未找到 API Spec！",
+    "CREATE_API_SPEC": "创建 API Spec",
+    "OPEN_API_SPEC": "打开 API Spec",
+    "OPEN_API_SPEC_ERROR": "打开 API Spec 时出错"
+  },
+  "DEPRECATION_WARNING": {
+    "WILL_BE_REMOVED": "{{featureName}} 将在",
+    "DEPRECATED_DESC": "中移除，该功能已废弃且不再受支持。详情请参阅",
+    "THIS_POST": "这篇文章",
+    "OR_CONTACT_US": "或通过以下方式联系我们",
+    "WITH_QUESTIONS": "提出你的问题。"
+  },
+  "ENDPOINT_ITEM": {
+    "DEPRECATED": "已废弃"
+  },
+  "SIDEBAR": {
+    "API_SPECS": {
+      "NO_API_SPECS_FOUND": "未找到 API Spec。",
+      "OPEN": "打开",
+      "REMOVE": "移除",
+      "CLOSE_API_SPEC_TITLE": "关闭 API Spec",
+      "API_SPEC_CLOSED": "API Spec 已关闭",
+      "CLOSE_API_SPEC_ERROR": "关闭 API Spec 时出错",
+      "CLOSE_API_SPEC_CONFIRM": "确定要在 Bruno 中关闭 API Spec",
+      "CLOSE_API_SPEC_INFO": "它仍会保留在上方路径对应的文件系统位置，你之后可以重新打开。",
+      "ADD_NEW_API_SPEC": "添加新 API Spec",
+      "CREATE_API_SPEC": "创建 API Spec",
+      "OPEN_API_SPEC": "打开 API Spec",
+      "OPEN_API_SPEC_ERROR": "打开 API Spec 时出错",
+      "API_SPECS": "API Specs"
+    },
+    "DELETE_COLLECTION_ITEM": {
+      "DELETE_FOLDER": "删除文件夹",
+      "DELETE_REQUEST": "删除请求",
+      "CONFIRM_DELETE": "确定要删除",
+      "DELETE_ERROR": "删除条目时出错"
+    },
+    "COLLECTION_ITEM_INFO": {
+      "FOLDER_NAME": "文件夹名称",
+      "REQUEST_NAME": "请求名称",
+      "FILE_NAME": "文件名称",
+      "ON_FILESYSTEM": "（文件系统中）",
+      "FOLDER_FILESYSTEM_HELP": "该文件夹在文件系统中的名称。",
+      "FILE_FILESYSTEM_HELP": "Bruno 会将每个请求作为文件保存在你的 Collection 文件夹中。"
+    },
+    "CREATE_OR_OPEN_COLLECTION": {
+      "NO_COLLECTIONS_FOUND": "未找到 Collections。",
+      "CREATE": "创建",
+      "OPEN": "打开",
+      "OPEN_COLLECTION_ERROR": "打开 Collection 时出错"
+    }
+  },
+  "WS_RESPONSE": {
+    "MESSAGES": "消息",
+    "HEADERS": "响应头",
+    "TIMELINE": "时间线",
+    "NO_HEADERS_RECEIVED": "未收到响应头",
+    "LATEST_LAST": "最新在后",
+    "LATEST_FIRST": "最新在前"
+  },
+  "RESPONSE_LAYOUT": {
+    "SWITCH_TO_VERTICAL": "切换到垂直布局",
+    "SWITCH_TO_HORIZONTAL": "切换到水平布局"
+  },
+  "STATUS_BAR": {
+    "PREFERENCES": "偏好设置",
+    "CHANGE_THEME": "切换主题",
+    "NOTIFICATIONS": "通知",
+    "GITHUB_REPOSITORY": "GitHub 仓库",
+    "GLOBAL_SEARCH": "全局搜索",
+    "SEARCH": "搜索",
+    "COOKIES": "Cookies",
+    "OPEN_COOKIES": "打开 Cookies",
+    "DEV_TOOLS": "开发者工具",
+    "OPEN_DEV_TOOLS": "打开开发者工具",
+    "OPEN_DEV_TOOLS_WITH_ERRORS": "打开开发者工具（{{count}} 个错误）"
+  },
+  "ENVIRONMENTS": {
+    "CONFIRM_CLOSE": {
+      "TITLE": "未保存的更改",
+      "HOLD_ON": "稍等...",
+      "UNSAVED_CHANGES_IN": "你在 {{settingsLabel}} 中有未保存的更改。",
+      "COLLECTION_ENV_SETTINGS": "Collection 环境设置",
+      "DOT_ENV_FILE": ".env 文件",
+      "GLOBAL_ENV_SETTINGS": "全局环境设置",
+      "DONT_SAVE": "不保存",
+      "SAVE": "保存"
+    },
+    "DOT_ENV_DETAILS": {
+      "TABLE": "表格",
+      "RAW": "原始",
+      "DELETE_DOT_ENV_FILE": "删除 .env 文件"
+    },
+    "DOT_ENV_EMPTY_STATE": {
+      "NO_DOT_ENV_FILE": "暂无 .env 文件",
+      "ADD_VARIABLE_TO_CREATE": "在下方添加变量，即可在此位置创建 .env 文件。"
+    },
+    "DELETE_DOT_ENV_FILE": {
+      "TITLE": "删除 {{filename}} 文件",
+      "CONFIRM_MESSAGE": "确定要删除 {{filename}} 文件吗？"
+    },
+    "ENV_LIST_CONTENT": {
+      "NO_ENVIRONMENT": "无环境",
+      "CONFIGURE": "配置",
+      "READY_TO_GET_STARTED": "准备好开始了吗？",
+      "CREATE": "创建",
+      "IMPORT": "导入"
+    },
+    "ENV_LIST": {
+      "ENVIRONMENTS": "环境",
+      "CREATE_ENVIRONMENT": "创建环境",
+      "IMPORT_ENVIRONMENT": "导入环境",
+      "EXPORT_ENVIRONMENT": "导出环境",
+      "SEARCH_ENVIRONMENTS": "搜索环境...",
+      "CLEAR_SEARCH": "清除搜索",
+      "SAVE": "保存",
+      "CANCEL": "取消",
+      "CREATE_DOTENV_FILE": "创建 .env 文件",
+      "NO_ENVIRONMENTS": "暂无环境",
+      "NO_DOT_ENV_FILES": "暂无 .env 文件",
+      "NO_ENVIRONMENTS_TITLE": "暂无环境",
+      "CREATE_ENVIRONMENT_BTN": "创建环境",
+      "IMPORT_ENVIRONMENT_BTN": "导入环境",
+      "ACTIVE_ENVIRONMENT": "当前激活环境",
+      "ACTIVATE_ENVIRONMENT": "激活环境",
+      "ENVIRONMENT_NAME_PLACEHOLDER": "环境名称...",
+      "DOT_ENV_FILES_SECTION": ".env 文件"
+    }
   }
 }

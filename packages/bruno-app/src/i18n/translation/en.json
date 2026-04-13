@@ -49,9 +49,11 @@
     "GET_STARTED": "Get Started",
     "BROWSE": "Browse",
     "NAME": "Name",
+    "VALUE": "Value",
     "LOCATION": "Location",
     "FILE_FORMAT": "File Format",
     "CANCEL": "Cancel",
+    "SAVE": "Save",
     "CREATE": "Create",
     "CLOSE": "Close",
     "IMPORT": "Import",
@@ -254,5 +256,425 @@
   },
   "SEARCH": {
     "REQUESTS_PLACEHOLDER": "Search requests..."
+  },
+  "GIT": {
+    "NOT_FOUND_MODAL": {
+      "TITLE": "Git Not Found",
+      "DESCRIPTION": "Git was not detected on your system. You need to install Git to proceed.",
+      "DOWNLOAD_PROMPT": "You can download Git for {{osName}} here:",
+      "DOWNLOAD_LINK": "Download Git for {{osName}}"
+    }
+  },
+  "ERRORS": {
+    "IPC_ERROR_TITLE": "Error"
+  },
+  "CONFIRM_REQUEST_CLOSE": {
+    "TITLE": "Unsaved changes",
+    "SAVE_AND_CLOSE": "Save and Close",
+    "CLOSE_WITHOUT_SAVING": "Close without saving",
+    "HOLD_ON": "Hold on..",
+    "UNSAVED_CHANGES": "You have unsaved changes in {{itemType}}",
+    "DONT_SAVE": "Don't Save",
+    "ITEM_TYPE_EXAMPLE": "example",
+    "ITEM_TYPE_REQUEST": "request"
+  },
+  "RESPONSE_PANE": {
+    "SOMETHING_WENT_WRONG": "Something went wrong",
+    "AN_ERROR_OCCURRED": "An error occurred!",
+    "LOADING_VIDEO": "Loading video...",
+    "NO_METADATA_RECEIVED": "No metadata received",
+    "NO_TRAILERS_RECEIVED": "No trailers received",
+    "PLACEHOLDER": {
+      "SEND_REQUEST": "Send Request",
+      "NEW_REQUEST": "New Request",
+      "EDIT_ENVIRONMENTS": "Edit Environments"
+    },
+    "FILTER": {
+      "FILTER_WITH_JSONPATH": "Filter with JSONPath",
+      "FILTER_WITH_XPATH": "Filter with XPath"
+    },
+    "JSON_PREVIEW": {
+      "CANNOT_PREVIEW_AS_JSON": "Cannot preview as JSON",
+      "INVALID_JSON_FORMAT": "Invalid JSON format: {{message}}",
+      "DATA_NULL_OR_UNDEFINED": "Data is null or undefined. Expected a valid JSON object or array.",
+      "DATA_NOT_OBJECT": "Data cannot be rendered as a JSON tree. Expected a JSON object or array.",
+      "INVALID_INPUT": "Invalid input. Expected a JSON object, array, or valid JSON string."
+    },
+    "RESPONSE_CLEAR": {
+      "CLEAR_RESPONSE": "Clear response"
+    },
+    "RESPONSE_PANE_ACTIONS": {
+      "MORE_ACTIONS": "More actions",
+      "COPY_RESPONSE": "Copy response",
+      "SAVE_RESPONSE": "Save response",
+      "DOWNLOAD_RESPONSE": "Download response",
+      "CLEAR_RESPONSE": "Clear response",
+      "CHANGE_LAYOUT": "Change layout"
+    },
+    "RUNNER_TIMELINE": {
+      "OAUTH2_CALLS": "OAuth2.0 Calls",
+      "NO_DEBUG_INFO": "No debug information available."
+    },
+    "SCRIPT_ERROR_ICON": {
+      "SCRIPT_EXECUTION_ERROR": "Script execution error occurred"
+    },
+    "SKIPPED_REQUEST": {
+      "REQUEST_SKIPPED": "Request skipped"
+    },
+    "TEST_RESULTS_LABEL": {
+      "TESTS": "Tests"
+    },
+    "TIMELINE": {
+      "REQUEST": "Request",
+      "RESPONSE": "Response",
+      "NETWORK_LOGS": "Network Logs",
+      "BODY": "Body",
+      "NO_BODY_FOUND": "No Body found",
+      "HEADERS": "Headers",
+      "NO_HEADERS_FOUND": "No Headers found"
+    }
+  },
+  "REQUEST_PANE": {
+    "QUERY": "Query",
+    "PATH": "Path",
+    "BULK_EDIT": "Bulk Edit",
+    "VARIABLES": "Variables",
+    "NO_GRPC_MESSAGES": "No gRPC messages available",
+    "ADD_MESSAGE": "Add Message",
+    "GENERATE_GRPCURL_COMMAND": "Generate gRPCurl Command",
+    "NO_WS_MESSAGES": "No WebSocket messages available",
+    "MULTIPLE_OPERATIONS_DETECTED": "Multiple operations detected",
+    "QUERY_BUILDER_SINGLE_OP": "The Query Builder supports a single operation at a time. Combine into one operation to sync.",
+    "TIMEOUT": "Timeout",
+    "KEEP_ALIVE_INTERVAL": "Keep Alive Interval",
+    "TIMEOUT_MS": "Timeout in milliseconds",
+    "KEEP_ALIVE_DESC": "Keep the websocket alive by sending ping requests to the server at every interval (in millseconds)",
+    "KEEP_ALIVE_ZERO": "0 (zero) = off"
+  },
+  "AUTH": {
+    "NO_AUTH": "No Auth",
+    "INHERITED_FROM": "Auth inherited from {{name}}:",
+    "GRPC_INHERITED_NOT_SUPPORTED": "Inherited auth not supported by gRPC. Using no auth instead.",
+    "WS_OAUTH2_NOT_SUPPORTED": "OAuth 2 not yet supported by WebSockets. Using no auth instead.",
+    "WS_OAUTH_INHERITED_NOT_SUPPORTED": "OAuth {{oauthVersion}} not yet supported by WebSockets. Using no auth instead.",
+    "WS_INHERITED_NOT_SUPPORTED": "Inherited auth not supported by WebSockets. Using no auth instead."
+  },
+  "COLLECTION_SETTINGS": {
+    "AUTH": {
+      "COLLECTION_AUTH_DESCRIPTION": "Configures authentication for the entire collection. This applies to all requests using the {{inherit}} option in the {{auth}} tab.",
+      "INHERIT": "Inherit",
+      "AUTH_TAB": "Auth",
+      "SAVE": "Save",
+      "KEY": "Key",
+      "VALUE": "Value",
+      "ADD_TO": "Add To",
+      "HEADER": "Header",
+      "QUERY_PARAMS": "Query Params",
+      "USERNAME": "Username",
+      "PASSWORD": "Password",
+      "TOKEN": "Token",
+      "ACCESS_KEY_ID": "Access Key ID",
+      "SECRET_ACCESS_KEY": "Secret Access Key",
+      "SESSION_TOKEN": "Session Token",
+      "SERVICE": "Service",
+      "REGION": "Region",
+      "PROFILE_NAME": "Profile Name",
+      "DOMAIN": "Domain"
+    },
+    "OVERVIEW": {
+      "LOCATION": "Location",
+      "ENVIRONMENTS": "Environments",
+      "COLLECTION_ENVIRONMENTS_ONE": "{{count}} collection environment",
+      "COLLECTION_ENVIRONMENTS_OTHER": "{{count}} collection environments",
+      "GLOBAL_ENVIRONMENTS_ONE": "{{count}} global environment",
+      "GLOBAL_ENVIRONMENTS_OTHER": "{{count}} global environments",
+      "REQUESTS": "Requests",
+      "REQUESTS_LOADING": "{{loaded}} out of {{total}} requests in the collection loaded",
+      "REQUESTS_COUNT_ONE": "{{count}} request in collection",
+      "REQUESTS_COUNT_OTHER": "{{count}} requests in collection",
+      "SHARE": "Share",
+      "SHARE_COLLECTION": "Share Collection",
+      "DOCUMENTATION": "Documentation",
+      "GENERATE_DOCS": "Generate Docs",
+      "REQUESTS_NOT_LOADED_TITLE": "Following requests were not loaded",
+      "PATHNAME": "Pathname",
+      "SIZE": "Size"
+    },
+    "VARS": {
+      "PRE_REQUEST": "Pre Request",
+      "POST_RESPONSE": "Post Response",
+      "SAVE": "Save",
+      "NAME": "Name",
+      "VALUE": "Value",
+      "EXPR": "Expr",
+      "VARIABLE_INVALID_CHARS": "Variable contains invalid characters. Must only contain alphanumeric characters, \"-\", \"_\", \".\""
+    },
+    "CLIENT_CERT": {
+      "DESCRIPTION": "Add client certificates to be used for specific domains.",
+      "CLIENT_CERTIFICATES": "Client Certificates",
+      "NO_CERTIFICATES": "No client certificates added",
+      "ADD_CLIENT_CERTIFICATE": "Add Client Certificate",
+      "DOMAIN": "Domain",
+      "TYPE": "Type",
+      "CERT": "Cert",
+      "PFX": "PFX",
+      "CERT_FILE": "Cert file",
+      "KEY_FILE": "Key file",
+      "PFX_FILE": "PFX file",
+      "PASSPHRASE": "Passphrase",
+      "ADD": "Add",
+      "SAVE": "Save",
+      "DOMAIN_REQUIRED": "Domain is required"
+    },
+    "PROTOBUF": {
+      "PROTO_FILES": "Proto Files ({{count}})",
+      "PROTO_FILES_TOOLTIP": "Keep your proto files within the collection folder or the corresponding git repository to ensure paths remain valid when sharing the collection.",
+      "INVALID_FILES_MESSAGE": "Some proto files cannot be found. Use the replace option to update their locations.",
+      "FILE_HEADER": "File",
+      "PATH_HEADER": "Path",
+      "ACTIONS_HEADER": "Actions",
+      "NO_PROTO_FILES": "No proto files added",
+      "ADD_PROTO_FILE": "+ Add Proto File",
+      "REPLACE_FILE_TITLE": "Replace file",
+      "REMOVE_FILE_TITLE": "Remove file",
+      "IMPORT_PATHS": "Import Paths ({{count}})",
+      "IMPORT_PATHS_TOOLTIP": "Add directories that contain proto files to be imported. These paths help resolve import statements in your proto files.",
+      "INVALID_IMPORT_PATHS_MESSAGE": "Some import paths cannot be found at their specified locations.",
+      "DIRECTORY_HEADER": "Directory",
+      "NO_IMPORT_PATHS": "No import paths added",
+      "ADD_IMPORT_PATH": "+ Add Import Path",
+      "ENABLE_IMPORT_PATH": "Enable this import path",
+      "DISABLE_IMPORT_PATH": "Disable this import path",
+      "REPLACE_DIRECTORY_TITLE": "Replace directory",
+      "REMOVE_IMPORT_PATH_TITLE": "Remove import path",
+      "SAVE": "Save"
+    }
+  },
+  "PREFERENCES": {
+    "GENERAL": "General",
+    "THEMES": "Themes",
+    "DISPLAY": "Display",
+    "PROXY": "Proxy",
+    "KEYBINDINGS": "Keybindings",
+    "CACHE": "Cache",
+    "SUPPORT": "Support",
+    "BETA": "Beta",
+    "DISPLAY_SECTION_HEADER": "Display"
+  },
+  "WORKSPACE": {
+    "REMOVE_WORKSPACE": "Remove Workspace",
+    "REMOVING": "Removing...",
+    "REMOVE": "Remove",
+    "REMOVE_ERROR": "An error occurred while removing the workspace",
+    "CONFIRM_REMOVE": "Are you sure you want to remove workspace",
+    "STILL_AVAILABLE": "The workspace will still be available in the file system and can be re-opened later."
+  },
+  "REQUEST_TABS": {
+    "COLLECTION": "Collection",
+    "OVERVIEW": "Overview",
+    "FOLDER": "Folder",
+    "VARIABLES": "Variables",
+    "RUNNER": "Runner",
+    "ENVIRONMENTS": "Environments",
+    "GLOBAL_ENVIRONMENTS": "Global Environments",
+    "PREFERENCES": "Preferences",
+    "OPENAPI": "OpenAPI",
+    "API_SPEC": "API Spec",
+    "BETA": "Beta"
+  },
+  "REQUEST_IS_LOADING": {
+    "FILE_INFO": "File Info",
+    "NAME": "Name:",
+    "PATH": "Path:",
+    "SIZE": "Size:",
+    "LOADING": "Loading..."
+  },
+  "OPENAPI_SYNC": {
+    "DISCONNECT_SYNC": "Disconnect Sync",
+    "DISCONNECT_CONFIRM": "Are you sure you want to disconnect OpenAPI sync?",
+    "DISCONNECT_NOTE": "This will only disconnect the sync configuration. Your collection will remain intact.",
+    "DISCONNECT": "Disconnect",
+    "UNABLE_TO_CHECK_UPDATES": "Unable to check for updates",
+    "FIX_CONNECTION": "Fix the connection issue above and check again.",
+    "NO_UPDATES_FROM_SPEC": "No updates from the spec",
+    "NO_UPDATES_DESC": "The spec endpoints have not been updated since the last sync. You can restore the spec file to track local collection changes.",
+    "RESTORE_SPEC_FILE": "Restore Spec File",
+    "UPDATE_CONNECTION_SETTINGS": "Update connection settings",
+    "SOURCE_FILE_NOT_FOUND": "Source file not found at {{sourceUrl}}",
+    "INVALID_OPENAPI_SPEC": "Invalid OpenAPI specification",
+    "SPEC_UPDATED": "OpenAPI spec has been updated",
+    "CHECKED": "Checked",
+    "ENDPOINTS_UPDATED_one": "{{count}} endpoint updated",
+    "ENDPOINTS_UPDATED_other": "{{count}} endpoints updated",
+    "ENDPOINTS_ADDED_one": "{{count}} endpoint added",
+    "ENDPOINTS_ADDED_other": "{{count}} endpoints added",
+    "ENDPOINTS_REMOVED_one": "{{count}} endpoint removed",
+    "ENDPOINTS_REMOVED_other": "{{count}} endpoints removed"
+  },
+  "GRPC": {
+    "FROM_COLLECTION_SETTINGS": "From Collection Settings",
+    "SOME_IMPORT_PATHS_NOT_FOUND": "Some import paths could not be found.",
+    "MANAGE_IMPORT_PATHS": "Manage import paths",
+    "NO_IMPORT_PATHS_CONFIGURED": "No import paths configured in collection settings",
+    "BROWSE_FOR_IMPORT_PATH": "Browse for Import Path",
+    "SOME_PROTO_FILES_NOT_FOUND": "Some proto files could not be found.",
+    "MANAGE_PROTO_FILES": "Manage proto files",
+    "NO_PROTO_FILES_CONFIGURED": "No proto files configured in collection settings",
+    "BROWSE_FOR_PROTO_FILE": "Browse for Proto File",
+    "PROTO_FILES": "Proto Files",
+    "IMPORT_PATHS": "Import Paths",
+    "MODE": "Mode",
+    "PROTO_FILE": "Proto File",
+    "REFLECTION": "Reflection",
+    "USING_REFLECTION": "Using Reflection",
+    "SELECT_PROTO_FILE": "Select Proto File",
+    "USING_SERVER_REFLECTION": "Using server reflection to discover gRPC methods.",
+    "GRPC_SERVER_ERROR": "gRPC Server Error",
+    "CLEAR_TIMELINE": "Clear Timeline",
+    "BROWSE_PROTO_FILE_ERROR": "Failed to browse for proto file: {{message}}",
+    "ADD_PROTO_FILE_ERROR": "Failed to add proto file: {{message}}",
+    "PROTO_FILE_ALREADY_EXISTS": "Proto file already exists in collection settings",
+    "PROTO_FILE_ADDED": "Added proto file to collection",
+    "PROTO_FILE_NOT_FOUND": "Proto file not found",
+    "BROWSE_IMPORT_DIRECTORY_ERROR": "Failed to browse for import directory: {{message}}",
+    "ADD_IMPORT_PATH_ERROR": "Failed to add import path: {{message}}",
+    "IMPORT_PATH_ADDED": "Added import path to collection",
+    "TOGGLE_IMPORT_PATH_ERROR": "Failed to toggle import path: {{message}}",
+    "IMPORT_PATH_ENABLED": "Import path enabled",
+    "IMPORT_PATH_DISABLED": "Import path disabled"
+  },
+  "NETWORK_ERROR": {
+    "TITLE": "Network Error"
+  },
+  "API_SPEC_PANEL": {
+    "API_DESIGNER": "API Designer",
+    "API_SPEC_NOT_FOUND": "API Spec not found!",
+    "CREATE_API_SPEC": "Create API Spec",
+    "OPEN_API_SPEC": "Open API Spec",
+    "OPEN_API_SPEC_ERROR": "An error occurred while opening the API spec"
+  },
+  "DEPRECATION_WARNING": {
+    "WILL_BE_REMOVED": "{{featureName}} will be removed in",
+    "DEPRECATED_DESC": "They are deprecated and will no longer be supported. Learn more in",
+    "THIS_POST": "this post",
+    "OR_CONTACT_US": "or contact us at",
+    "WITH_QUESTIONS": "with questions."
+  },
+  "ENDPOINT_ITEM": {
+    "DEPRECATED": "deprecated"
+  },
+  "SIDEBAR": {
+    "API_SPECS": {
+      "NO_API_SPECS_FOUND": "No API Specs found.",
+      "OPEN": "Open",
+      "REMOVE": "Remove",
+      "CLOSE_API_SPEC_TITLE": "Close Api Spec",
+      "API_SPEC_CLOSED": "API Spec closed",
+      "CLOSE_API_SPEC_ERROR": "An error occurred while closing the API Spec",
+      "CLOSE_API_SPEC_CONFIRM": "Are you sure you want to close API Spec",
+      "CLOSE_API_SPEC_INFO": "It will still be available in the file system at the above location and can be re-opened later.",
+      "ADD_NEW_API_SPEC": "Add new API Spec",
+      "CREATE_API_SPEC": "Create API Spec",
+      "OPEN_API_SPEC": "Open API Spec",
+      "OPEN_API_SPEC_ERROR": "An error occurred while opening the API spec",
+      "API_SPECS": "API Specs"
+    },
+    "DELETE_COLLECTION_ITEM": {
+      "DELETE_FOLDER": "Delete Folder",
+      "DELETE_REQUEST": "Delete Request",
+      "CONFIRM_DELETE": "Are you sure you want to delete",
+      "DELETE_ERROR": "Error deleting item"
+    },
+    "COLLECTION_ITEM_INFO": {
+      "FOLDER_NAME": "Folder Name",
+      "REQUEST_NAME": "Request Name",
+      "FILE_NAME": "File Name",
+      "ON_FILESYSTEM": "(on filesystem)",
+      "FOLDER_FILESYSTEM_HELP": "The name of the folder on your filesystem.",
+      "FILE_FILESYSTEM_HELP": "Bruno saves each request as a file in your collection's folder."
+    },
+    "CREATE_OR_OPEN_COLLECTION": {
+      "NO_COLLECTIONS_FOUND": "No collections found.",
+      "CREATE": "Create",
+      "OPEN": "Open",
+      "OPEN_COLLECTION_ERROR": "An error occurred while opening the collection"
+    }
+  },
+  "WS_RESPONSE": {
+    "MESSAGES": "Messages",
+    "HEADERS": "Headers",
+    "TIMELINE": "Timeline",
+    "NO_HEADERS_RECEIVED": "No headers received",
+    "LATEST_LAST": "Latest Last",
+    "LATEST_FIRST": "Latest First"
+  },
+  "RESPONSE_LAYOUT": {
+    "SWITCH_TO_VERTICAL": "Switch to vertical layout",
+    "SWITCH_TO_HORIZONTAL": "Switch to horizontal layout"
+  },
+  "STATUS_BAR": {
+    "PREFERENCES": "Preferences",
+    "CHANGE_THEME": "Change Theme",
+    "NOTIFICATIONS": "Notifications",
+    "GITHUB_REPOSITORY": "GitHub Repository",
+    "GLOBAL_SEARCH": "Global Search",
+    "SEARCH": "Search",
+    "COOKIES": "Cookies",
+    "OPEN_COOKIES": "Open Cookies",
+    "DEV_TOOLS": "Dev Tools",
+    "OPEN_DEV_TOOLS": "Open Dev Tools",
+    "OPEN_DEV_TOOLS_WITH_ERRORS": "Open Dev Tools ({{count}} errors)"
+  },
+  "ENVIRONMENTS": {
+    "CONFIRM_CLOSE": {
+      "TITLE": "Unsaved changes",
+      "HOLD_ON": "Hold on...",
+      "UNSAVED_CHANGES_IN": "You have unsaved changes in {{settingsLabel}}.",
+      "COLLECTION_ENV_SETTINGS": "collection environment settings",
+      "DOT_ENV_FILE": ".env file",
+      "GLOBAL_ENV_SETTINGS": "global environment settings",
+      "DONT_SAVE": "Don't Save",
+      "SAVE": "Save"
+    },
+    "DOT_ENV_DETAILS": {
+      "TABLE": "Table",
+      "RAW": "Raw",
+      "DELETE_DOT_ENV_FILE": "Delete .env file"
+    },
+    "DOT_ENV_EMPTY_STATE": {
+      "NO_DOT_ENV_FILE": "No .env File",
+      "ADD_VARIABLE_TO_CREATE": "Add a variable below to create a .env file in this location."
+    },
+    "DELETE_DOT_ENV_FILE": {
+      "TITLE": "Delete {{filename}} File",
+      "CONFIRM_MESSAGE": "Are you sure you want to delete {{filename}} file?"
+    },
+    "ENV_LIST_CONTENT": {
+      "NO_ENVIRONMENT": "No Environment",
+      "CONFIGURE": "Configure",
+      "READY_TO_GET_STARTED": "Ready to get started?",
+      "CREATE": "Create",
+      "IMPORT": "Import"
+    },
+    "ENV_LIST": {
+      "ENVIRONMENTS": "Environments",
+      "CREATE_ENVIRONMENT": "Create environment",
+      "IMPORT_ENVIRONMENT": "Import environment",
+      "EXPORT_ENVIRONMENT": "Export environment",
+      "SEARCH_ENVIRONMENTS": "Search environments...",
+      "CLEAR_SEARCH": "Clear search",
+      "SAVE": "Save",
+      "CANCEL": "Cancel",
+      "CREATE_DOTENV_FILE": "Create .env file",
+      "NO_ENVIRONMENTS": "No environments",
+      "NO_DOT_ENV_FILES": "No .env files",
+      "NO_ENVIRONMENTS_TITLE": "No Environments",
+      "CREATE_ENVIRONMENT_BTN": "Create Environment",
+      "IMPORT_ENVIRONMENT_BTN": "Import Environment",
+      "ACTIVE_ENVIRONMENT": "Active environment",
+      "ACTIVATE_ENVIRONMENT": "Activate environment",
+      "ENVIRONMENT_NAME_PLACEHOLDER": "Environment name...",
+      "DOT_ENV_FILES_SECTION": ".env Files"
+    }
   }
 }
