@@ -6,9 +6,11 @@ import { deleteItem, closeTabs } from 'providers/ReduxStore/slices/collections/a
 import { recursivelyGetAllItemUids } from 'utils/collections';
 import StyledWrapper from './StyledWrapper';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const DeleteCollectionItem = ({ onClose, item, collectionUid }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const isFolder = isItemAFolder(item);
   const onConfirm = () => {
     dispatch(deleteItem(item.uid, collectionUid)).then(() => {
@@ -31,7 +33,7 @@ const DeleteCollectionItem = ({ onClose, item, collectionUid }) => {
       }
     }).catch((error) => {
       console.error('Error deleting item', error);
-      toast.error(error?.message || 'Error deleting item');
+      toast.error(error?.message || t('SIDEBAR.DELETE_COLLECTION_ITEM.DELETE_ERROR'));
     });
     onClose();
   };
@@ -40,13 +42,13 @@ const DeleteCollectionItem = ({ onClose, item, collectionUid }) => {
     <StyledWrapper>
       <Modal
         size="md"
-        title={`Delete ${isFolder ? 'Folder' : 'Request'}`}
-        confirmText="Delete"
+        title={isFolder ? t('SIDEBAR.DELETE_COLLECTION_ITEM.DELETE_FOLDER') : t('SIDEBAR.DELETE_COLLECTION_ITEM.DELETE_REQUEST')}
+        confirmText={t('COMMON.DELETE')}
         confirmButtonColor="danger"
         handleConfirm={onConfirm}
         handleCancel={onClose}
       >
-        Are you sure you want to delete <span className="font-medium">{item.name}</span> ?
+        {t('SIDEBAR.DELETE_COLLECTION_ITEM.CONFIRM_DELETE')} <span className="font-medium">{item.name}</span> ?
       </Modal>
     </StyledWrapper>
   );

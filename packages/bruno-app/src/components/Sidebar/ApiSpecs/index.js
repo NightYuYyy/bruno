@@ -6,6 +6,7 @@ import { openApiSpec } from 'providers/ReduxStore/slices/apiSpec';
 import ApiSpecItem from './ApiSpecItem';
 import StyledWrapper from './StyledWrapper';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const LinkStyle = styled.span`
   color: ${(props) => props.theme['text-link']};
@@ -14,6 +15,7 @@ const LinkStyle = styled.span`
 const ApiSpecs = () => {
   const dispatch = useDispatch();
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const allApiSpecs = useSelector((state) => state.apiSpec.apiSpecs);
   const workspaces = useSelector((state) => state.workspaces.workspaces);
   const activeWorkspaceUid = useSelector((state) => state.workspaces.activeWorkspaceUid);
@@ -33,13 +35,13 @@ const ApiSpecs = () => {
 
   const handleOpenApiSpec = () => {
     dispatch(openApiSpec()).catch(
-      (err) => console.log(err) && toast.error('An error occurred while opening the API spec')
+      (err) => console.log(err) && toast.error(t('SIDEBAR.API_SPECS.OPEN_API_SPEC_ERROR'))
     );
   };
 
   const OpenLink = () => (
     <LinkStyle className="underline text-link cursor-pointer" theme={theme} onClick={() => handleOpenApiSpec()}>
-      Open
+      {t('SIDEBAR.API_SPECS.OPEN')}
     </LinkStyle>
   );
 
@@ -47,7 +49,7 @@ const ApiSpecs = () => {
     return (
       <StyledWrapper>
         <div className="text-xs text-center placeholder py-4">
-          <div>No API Specs found.</div>
+          <div>{t('SIDEBAR.API_SPECS.NO_API_SPECS_FOUND')}</div>
           <div className="mt-2">
             <OpenLink /> API Spec.
           </div>
