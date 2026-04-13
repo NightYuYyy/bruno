@@ -467,7 +467,16 @@
     "REMOVE": "Remove",
     "REMOVE_ERROR": "An error occurred while removing the workspace",
     "CONFIRM_REMOVE": "Are you sure you want to remove workspace",
-    "STILL_AVAILABLE": "The workspace will still be available in the file system and can be re-opened later."
+    "STILL_AVAILABLE": "The workspace will still be available in the file system and can be re-opened later.",
+    "CREATE_TITLE": "Create Workspace",
+    "IMPORT_TITLE": "Import Workspace",
+    "COLLECTION_NOT_CLONED": "Collection “{{name}}” needs to be cloned first"
+  },
+  "COOKIES": {
+    "MODIFY_TITLE": "Modify Cookie"
+  },
+  "ELECTRON_MENU": {
+    "ACTUAL_SIZE": "Actual Size"
   },
   "REQUEST_TABS": {
     "COLLECTION": "Collection",

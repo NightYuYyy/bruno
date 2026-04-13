@@ -467,7 +467,16 @@
     "REMOVE": "移除",
     "REMOVE_ERROR": "移除工作区时出错",
     "CONFIRM_REMOVE": "确定要移除工作区",
-    "STILL_AVAILABLE": "工作区仍会保留在文件系统中，之后可以重新打开。"
+    "STILL_AVAILABLE": "工作区仍会保留在文件系统中，之后可以重新打开。",
+    "CREATE_TITLE": "创建工作区",
+    "IMPORT_TITLE": "导入工作区",
+    "COLLECTION_NOT_CLONED": "Collection “{{name}}” 需要先克隆"
+  },
+  "COOKIES": {
+    "MODIFY_TITLE": "修改 Cookie"
+  },
+  "ELECTRON_MENU": {
+    "ACTUAL_SIZE": "实际大小"
   },
   "REQUEST_TABS": {
     "COLLECTION": "Collection",
