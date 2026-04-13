@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactJson from 'react-json-view';
 import ErrorBanner from 'ui/ErrorBanner';
+import { useTranslation } from 'react-i18next';
 
 const JsonPreview = ({ data, displayedTheme }) => {
+  const { t } = useTranslation();
+
   // Helper function to validate and parse JSON data
   const validateJsonData = (data) => {
     // If data is already an object or array, use it directly
@@ -16,12 +19,12 @@ const JsonPreview = ({ data, displayedTheme }) => {
         const parsed = JSON.parse(data);
         return { data: parsed, error: null };
       } catch (e) {
-        return { data: null, error: `Invalid JSON format: ${e.message}` };
+        return { data: null, error: t('RESPONSE_PANE.JSON_PREVIEW.INVALID_JSON_FORMAT', { message: e.message }) };
       }
     }
 
     // For other types, return error
-    return { data: null, error: 'Invalid input. Expected a JSON object, array, or valid JSON string.' };
+    return { data: null, error: t('RESPONSE_PANE.JSON_PREVIEW.INVALID_INPUT') };
   };
 
   // Validate and parse JSON data
@@ -29,16 +32,16 @@ const JsonPreview = ({ data, displayedTheme }) => {
 
   // Show error if parsing failed
   if (jsonData.error) {
-    return <ErrorBanner errors={[{ title: 'Cannot preview as JSON', message: jsonData.error }]} />;
+    return <ErrorBanner errors={[{ title: t('RESPONSE_PANE.JSON_PREVIEW.CANNOT_PREVIEW_AS_JSON'), message: jsonData.error }]} />;
   }
 
   // Validate that data can be rendered as JSON tree
   if (jsonData.data === null || jsonData.data === undefined) {
-    return <ErrorBanner errors={[{ title: 'Cannot preview as JSON', message: 'Data is null or undefined. Expected a valid JSON object or array.' }]} />;
+    return <ErrorBanner errors={[{ title: t('RESPONSE_PANE.JSON_PREVIEW.CANNOT_PREVIEW_AS_JSON'), message: t('RESPONSE_PANE.JSON_PREVIEW.DATA_NULL_OR_UNDEFINED') }]} />;
   }
 
   if (typeof jsonData.data !== 'object') {
-    return <ErrorBanner errors={[{ title: 'Cannot preview as JSON', message: 'Data cannot be rendered as a JSON tree. Expected a JSON object or array.' }]} />;
+    return <ErrorBanner errors={[{ title: t('RESPONSE_PANE.JSON_PREVIEW.CANNOT_PREVIEW_AS_JSON'), message: t('RESPONSE_PANE.JSON_PREVIEW.DATA_NOT_OBJECT') }]} />;
   }
 
   return (

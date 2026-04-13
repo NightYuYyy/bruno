@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import find from 'lodash/find';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateResponsePaneTab } from 'providers/ReduxStore/slices/tabs';
@@ -17,6 +18,7 @@ import ResponseLayoutToggle from '../ResponseLayoutToggle';
 import ResponsiveTabs from 'ui/ResponsiveTabs';
 
 const GrpcResponsePane = ({ item, collection }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const tabs = useSelector((state) => state.tabs.tabs);
   const activeTabUid = useSelector((state) => state.tabs.activeTabUid);
@@ -107,12 +109,12 @@ const GrpcResponsePane = ({ item, collection }) => {
   }
 
   if (!activeTabUid) {
-    return <div>Something went wrong</div>;
+    return <div>{t('RESPONSE_PANE.SOMETHING_WENT_WRONG')}</div>;
   }
 
-  const focusedTab = find(tabs, (t) => t.uid === activeTabUid);
+  const focusedTab = find(tabs, (tab) => tab.uid === activeTabUid);
   if (!focusedTab || !focusedTab.uid || !focusedTab.responsePaneTab) {
-    return <div className="pb-4 px-4">An error occurred!</div>;
+    return <div className="pb-4 px-4">{t('RESPONSE_PANE.AN_ERROR_OCCURRED')}</div>;
   }
 
   const rightContent = !isLoading ? (

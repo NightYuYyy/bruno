@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import forOwn from 'lodash/forOwn';
+import { useTranslation } from 'react-i18next';
 import StyledWrapper from './StyledWrapper';
 import TimelineItem from '../Timeline/TimelineItem';
 
 const RunnerTimeline = ({ request = {}, response = {}, item, collection }) => {
+  const { t } = useTranslation();
   const requestHeaders = [];
 
   forOwn(request.headers, (value, key) => {
@@ -39,7 +41,7 @@ const RunnerTimeline = ({ request = {}, response = {}, item, collection }) => {
           <div key={`oauth2-${index}`} className="timeline-event mt-4">
             <div className="timeline-event-header cursor-pointer flex items-center">
               <div className="flex items-center">
-                <span className="font-bold">OAuth2.0 Calls</span>
+                <span className="font-bold">{t('RESPONSE_PANE.RUNNER_TIMELINE.OAUTH2_CALLS')}</span>
               </div>
             </div>
             <div className="mt-2">
@@ -57,7 +59,7 @@ const RunnerTimeline = ({ request = {}, response = {}, item, collection }) => {
                   </div>
                 ))
               ) : (
-                <div>No debug information available.</div>
+                <div>{t('RESPONSE_PANE.RUNNER_TIMELINE.NO_DEBUG_INFO')}</div>
               )}
             </div>
           </div>
