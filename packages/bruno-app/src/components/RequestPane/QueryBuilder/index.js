@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IconCloudDownload, IconFileUpload, IconAlertTriangle, IconChevronRight, IconChevronDown } from '@tabler/icons';
 import { getRootFields } from 'utils/graphql/queryBuilder';
 import useQueryBuilder from 'hooks/useQueryBuilder';
@@ -8,6 +9,7 @@ import Button from 'ui/Button';
 import StyledWrapper from './StyledWrapper';
 
 const QueryBuilder = ({ schema, onQueryChange, editorValue, onVariablesChange, variablesValue, loadSchema, isSchemaLoading, schemaError }) => {
+  const { t } = useTranslation();
   const {
     selections,
     expandedPaths,
@@ -157,8 +159,8 @@ const QueryBuilder = ({ schema, onQueryChange, editorValue, onVariablesChange, v
           <div className="sync-error-text">
             {syncError === 'multiple_operations' ? (
               <>
-                <strong>Multiple operations detected</strong>
-                <span>The Query Builder supports a single operation at a time. Combine into one operation to sync.</span>
+                <strong>{t('REQUEST_PANE.MULTIPLE_OPERATIONS_DETECTED')}</strong>
+                <span>{t('REQUEST_PANE.QUERY_BUILDER_SINGLE_OP')}</span>
               </>
             ) : null}
           </div>

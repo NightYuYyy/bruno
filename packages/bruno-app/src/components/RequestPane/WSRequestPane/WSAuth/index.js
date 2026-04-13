@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import get from 'lodash/get';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import BearerAuth from '../../Auth/BearerAuth';
 import BasicAuth from '../../Auth/BasicAuth';
 import ApiKeyAuth from '../../Auth/ApiKeyAuth';
@@ -13,6 +14,7 @@ import { saveRequest } from 'providers/ReduxStore/slices/collections/actions';
 const supportedAuthModes = ['basic', 'bearer', 'apikey', 'oauth2', 'none', 'inherit'];
 
 const WSAuth = ({ item, collection }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const authMode = item.draft ? get(item, 'draft.request.auth.mode') : get(item, 'request.auth.mode');
   const requestTreePath = getTreePathFromCollectionToItem(collection, item);
@@ -68,7 +70,7 @@ const WSAuth = ({ item, collection }) => {
   const getAuthView = () => {
     switch (authMode) {
       case 'none': {
-        return <div>No Auth</div>;
+        return <div>{t('AUTH.NO_AUTH')}</div>;
       }
       case 'basic': {
         return <BasicAuth collection={collection} item={item} updateAuth={updateAuth} request={request} save={save} />;
@@ -84,7 +86,7 @@ const WSAuth = ({ item, collection }) => {
           <>
             <div className="flex flex-row w-full gap-2">
               <div>
-                OAuth 2 not <strong>yet</strong> supported by WebSockets. Using no auth instead.
+                {t('AUTH.WS_OAUTH2_NOT_SUPPORTED')}
               </div>
             </div>
           </>
@@ -98,7 +100,7 @@ const WSAuth = ({ item, collection }) => {
           return (
             <>
               <div className="flex flex-row w-full mt-2 gap-2">
-                {source.auth.mode === 'oauth1' ? 'OAuth 1.0' : 'OAuth 2'} not <strong>yet</strong> supported by WebSockets. Using no auth instead.
+                {t('AUTH.WS_OAUTH_INHERITED_NOT_SUPPORTED', { oauthVersion: source.auth.mode === 'oauth1' ? '1.0' : '2' })}
               </div>
             </>
           );
@@ -109,7 +111,7 @@ const WSAuth = ({ item, collection }) => {
           return (
             <>
               <div className="flex flex-row w-full gap-2">
-                <div> Auth inherited from {source.name}: </div>
+                <div>{t('AUTH.INHERITED_FROM', { name: source.name })}</div>
                 <div className="inherit-mode-text">{humanizeRequestAuthMode(source.auth?.mode)}</div>
               </div>
             </>
@@ -118,7 +120,7 @@ const WSAuth = ({ item, collection }) => {
           return (
             <>
               <div className="flex flex-row w-full gap-2">
-                <div>Inherited auth not supported by WebSockets. Using no auth instead.</div>
+                <div>{t('AUTH.WS_INHERITED_NOT_SUPPORTED')}</div>
               </div>
             </>
           );

@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useMemo, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import find from 'lodash/find';
 import get from 'lodash/get';
 import classnames from 'classnames';
@@ -43,6 +44,7 @@ const TAB_CONFIG = [
 
 const GraphQLRequestPane = ({ item, collection, onSchemaLoad, toggleDocs, handleGqlClickReference }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const tabs = useSelector((state) => state.tabs.tabs);
   const activeTabUid = useSelector((state) => state.tabs.activeTabUid);
   const preferences = useSelector((state) => state.app.preferences);
@@ -235,7 +237,7 @@ const GraphQLRequestPane = ({ item, collection, onSchemaLoad, toggleDocs, handle
                     <IconChevronRight size={14} strokeWidth={2} />
                   )}
                 </span>
-                <span>Variables</span>
+                <span>{t('REQUEST_PANE.VARIABLES')}</span>
               </button>
               {variablesOpen && (
                 <div className="flex-1 min-h-0 relative">

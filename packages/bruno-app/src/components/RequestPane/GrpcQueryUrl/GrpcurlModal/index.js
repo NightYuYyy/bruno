@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useTheme } from 'providers/Theme';
 import { IconCheck, IconCopy } from '@tabler/icons';
@@ -10,6 +11,7 @@ import Button from 'ui/Button';
 
 const GrpcurlModal = ({ isOpen, onClose, command }) => {
   const { displayedTheme } = useTheme();
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const preferences = useSelector((state) => state.app.preferences);
 
@@ -30,7 +32,7 @@ const GrpcurlModal = ({ isOpen, onClose, command }) => {
       handleCancel={onClose}
       title={(
         <div className="flex items-center gap-2">
-          <span>Generate gRPCurl Command</span>
+          <span>{t('REQUEST_PANE.GENERATE_GRPCURL_COMMAND')}</span>
         </div>
       )}
       size="lg"

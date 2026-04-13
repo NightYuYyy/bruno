@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 import InfoTip from 'components/InfoTip/index';
 import SingleLineEditor from 'components/SingleLineEditor';
 import ToolHint from 'components/ToolHint/index';
@@ -30,6 +31,7 @@ const ERRORS = {
 
 const WSSettingsPane = ({ item, collection }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { storedTheme } = useTheme();
   const requestPreferences = useSelector((state) => state.app.preferences.request);
 
@@ -56,14 +58,14 @@ const WSSettingsPane = ({ item, collection }) => {
     <StyledWrapper className="flex flex-col gap-4 w-full">
       <section className="grid gap-4 items-center grid-cols-2">
         <div>
-          <label className="font-medium mb-2">Timeout</label>
+          <label className="font-medium mb-2">{t('REQUEST_PANE.TIMEOUT')}</label>
           <InfoTip
             infotipId="setting-connection-timeout"
             className="tooltip-mod max-w-lg"
             content={(
               <div>
                 <p>
-                  <span>Timeout in milliseconds</span>
+                  <span>{t('REQUEST_PANE.TIMEOUT_MS')}</span>
                 </p>
               </div>
             )}
@@ -91,7 +93,7 @@ const WSSettingsPane = ({ item, collection }) => {
         </div>
 
         <div>
-          <label className="font-medium mb-2">Keep Alive Interval</label>
+          <label className="font-medium mb-2">{t('REQUEST_PANE.KEEP_ALIVE_INTERVAL')}</label>
           <InfoTip
             infotipId="setting-keep-alive"
             className="tooltip-mod max-w-lg"
@@ -99,10 +101,10 @@ const WSSettingsPane = ({ item, collection }) => {
               <div>
                 <p>
                   <span>
-                    Keep the websocket alive by sending ping requests to the server at every interval (in millseconds)
+                    {t('REQUEST_PANE.KEEP_ALIVE_DESC')}
                   </span>
                 </p>
-                <p className="mt-2">0 (zero) = off</p>
+                <p className="mt-2">{t('REQUEST_PANE.KEEP_ALIVE_ZERO')}</p>
               </div>
             )}
           />
