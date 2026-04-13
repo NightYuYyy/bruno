@@ -35,14 +35,14 @@ const CreateEnvironment = ({ collection, onClose, onEnvironmentCreated }) => {
     onSubmit: (values) => {
       dispatch(addEnvironment(values.name, collection.uid))
         .then(() => {
-          toast.success('Environment created in collection');
+          toast.success('环境已在 Collection 中创建');
           onClose();
           // Call the callback if provided
           if (onEnvironmentCreated) {
             onEnvironmentCreated();
           }
         })
-        .catch(() => toast.error('An error occurred while creating the environment'));
+        .catch(() => toast.error('创建环境时出错'));
     }
   });
 

@@ -90,9 +90,9 @@ const CollectionProperties = ({ onClose }) => {
   const clearDomainCookiesAction = () => {
     dispatch(deleteCookiesForDomain(domainToClear))
       .then(() => {
-        toast.success('Domain cookies cleared successfully');
+        toast.success('域下 Cookies 清除成功');
       })
-      .catch((err) => console.log(err) && toast.error('Failed to clear domain cookies'));
+      .catch((err) => console.log(err) && toast.error('清除域下 Cookies 失败'));
     setDomainToClear(null);
   };
 
@@ -105,9 +105,9 @@ const CollectionProperties = ({ onClose }) => {
       const { domain, path, key } = cookieToDelete;
       dispatch(deleteCookie(domain, path, key))
         .then(() => {
-          toast.success('Cookie deleted successfully');
+          toast.success('Cookie 删除成功');
         })
-        .catch((err) => console.log(err) && toast.error('Failed to delete cookie'));
+        .catch((err) => console.log(err) && toast.error('删除 Cookie 失败'));
     }
     setCookieToDelete(null);
   };

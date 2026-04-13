@@ -20,10 +20,10 @@ const ImportEnvironment = ({ onClose, onEnvironmentCreated }) => {
           .map((environment) =>
             dispatch(addGlobalEnvironment({ name: environment.name, variables: environment.variables }))
               .then(() => {
-                toast.success('Environment imported successfully');
+                toast.success('环境导入成功');
               })
               .catch((error) => {
-                toast.error('An error occurred while importing the environment');
+                toast.error('导入环境时出错');
                 console.error(error);
               }));
         return Promise.all(importPromises);

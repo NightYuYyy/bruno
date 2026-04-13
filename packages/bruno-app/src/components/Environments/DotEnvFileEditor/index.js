@@ -205,14 +205,14 @@ const DotEnvFileEditor = ({
     });
 
     if (hasValidationErrors) {
-      toast.error('Please fix validation errors before saving');
+      toast.error('请先修复校验错误再保存');
       return;
     }
 
     setIsSaving(true);
     onSave(variablesToSave)
       .then(() => {
-        toast.success('Changes saved successfully');
+        toast.success('更改已保存');
         const newValues = [
           ...variablesToSave,
           { uid: uuid(), name: '', value: '' }
@@ -223,7 +223,7 @@ const DotEnvFileEditor = ({
       })
       .catch((error) => {
         console.error(error);
-        toast.error('An error occurred while saving the changes');
+        toast.error('保存更改时出错');
         window.dispatchEvent(new Event('dotenv-save-failed'));
       })
       .finally(() => {
@@ -235,20 +235,20 @@ const DotEnvFileEditor = ({
     if (isSaving) return;
 
     if (!onSaveRaw) {
-      toast.error('Raw save is not supported');
+      toast.error('暂不支持原始模式保存');
       return;
     }
 
     setIsSaving(true);
     onSaveRaw(rawValue)
       .then(() => {
-        toast.success('Changes saved successfully');
+        toast.success('更改已保存');
         setIsModified(false);
         window.dispatchEvent(new Event('dotenv-save-complete'));
       })
       .catch((error) => {
         console.error(error);
-        toast.error('An error occurred while saving the changes');
+        toast.error('保存更改时出错');
         window.dispatchEvent(new Event('dotenv-save-failed'));
       })
       .finally(() => {

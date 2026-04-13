@@ -34,7 +34,7 @@ const Font = () => {
         }
       })
     ).catch(() => {
-      toast.error('Failed to save preferences');
+      toast.error('保存偏好设置失败');
     });
   }, [dispatch, preferences]);
 

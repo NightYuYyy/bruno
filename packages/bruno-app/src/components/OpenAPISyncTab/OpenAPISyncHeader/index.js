@@ -52,7 +52,7 @@ const OpenAPISyncHeader = ({
       toast.success(sourceIsLocal ? 'Path copied to clipboard' : 'URL copied to clipboard');
     } catch (err) {
       console.error('Error copying to clipboard:', err);
-      toast.error('Failed to copy to clipboard');
+      toast.error('复制到剪贴板失败');
     }
   };
 
@@ -63,7 +63,7 @@ const OpenAPISyncHeader = ({
       await window.ipcRenderer.invoke('renderer:show-in-folder', absolutePath);
     } catch (err) {
       console.error('Error revealing in folder:', err);
-      toast.error('Failed to open in file manager');
+      toast.error('在文件管理器中打开失败');
     }
   };
 

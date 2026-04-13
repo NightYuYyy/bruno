@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from 'i18next';
 import { IconApi, IconBrandGraphql, IconPlugConnected, IconCode } from '@tabler/icons';
 import { newHttpRequest, newWsRequest, newGrpcRequest } from 'providers/ReduxStore/slices/collections/actions';
 import { generateUniqueRequestName } from 'utils/collections';
@@ -41,7 +42,7 @@ const createRequest = async ({ dispatch, collection, itemUid, requestType }) => 
         break;
     }
   } catch (err) {
-    toast.error(formatIpcError(err) || 'An error occurred while adding the request');
+    toast.error(formatIpcError(err) || i18n.t('NEW_REQUEST.CREATE_REQUEST_ERROR'));
   }
 };
 

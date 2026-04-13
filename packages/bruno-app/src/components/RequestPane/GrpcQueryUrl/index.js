@@ -63,7 +63,7 @@ const GrpcQueryUrl = ({ item, collection, handleRun }) => {
     if (isConnectionActive) {
       cancelGrpcConnection(item.uid)
         .then(() => {
-          toast.success('gRPC connection cancelled');
+          toast.success('gRPC 连接已取消');
         })
         .catch((err) => {
           console.error('Failed to cancel gRPC connection:', err);
@@ -165,7 +165,7 @@ const GrpcQueryUrl = ({ item, collection, handleRun }) => {
 
     if (error) {
       console.error('Failed to load gRPC methods:', error);
-      toast.error('Failed to load gRPC methods');
+      toast.error('加载 gRPC 方法失败');
       setGrpcMethods([]);
       return;
     }
@@ -197,12 +197,12 @@ const GrpcQueryUrl = ({ item, collection, handleRun }) => {
 
   const handleGrpcurl = async (url) => {
     if (!url) {
-      toast.error('Please enter a valid gRPC server URL');
+      toast.error('请输入有效的 gRPC 服务器 URL');
       return;
     }
 
     if (!selectedGrpcMethod?.path) {
-      toast.error('Please select a gRPC method');
+      toast.error('请选择一个 gRPC 方法');
       return;
     }
 
@@ -217,7 +217,7 @@ const GrpcQueryUrl = ({ item, collection, handleRun }) => {
       }
     } catch (error) {
       console.error('Error generating grpcurl command:', error);
-      toast.error('Failed to generate grpcurl command');
+      toast.error('生成 grpcurl 命令失败');
     }
   };
 
@@ -235,11 +235,11 @@ const GrpcQueryUrl = ({ item, collection, handleRun }) => {
 
     cancelGrpcConnection(item.uid)
       .then(() => {
-        toast.success('gRPC connection cancelled');
+        toast.success('gRPC 连接已取消');
       })
       .catch((err) => {
         console.error('Failed to cancel gRPC connection:', err);
-        toast.error('Failed to cancel gRPC connection');
+        toast.error('取消 gRPC 连接失败');
       });
   };
 
@@ -248,11 +248,11 @@ const GrpcQueryUrl = ({ item, collection, handleRun }) => {
 
     endGrpcConnection(item.uid)
       .then(() => {
-        toast.success('gRPC stream ended');
+        toast.success('gRPC 流已结束');
       })
       .catch((err) => {
         console.error('Failed to end gRPC stream:', err);
-        toast.error('Failed to end gRPC stream');
+        toast.error('结束 gRPC 流失败');
       });
   };
 
@@ -345,7 +345,7 @@ const GrpcQueryUrl = ({ item, collection, handleRun }) => {
             } else if (protoFilePath) {
               handleProtoFileLoad(protoFilePath, true);
             } else {
-              toast.error('No proto file selected');
+              toast.error('尚未选择 proto 文件');
             }
           }}
         >

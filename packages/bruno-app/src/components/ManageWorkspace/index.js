@@ -44,7 +44,7 @@ const ManageWorkspace = () => {
   const handleShowInFolder = (workspace) => {
     if (workspace.pathname) {
       dispatch(showInFolder(workspace.pathname)).catch(() => {
-        toast.error('Error opening the folder');
+        toast.error('打开文件夹时出错');
       });
     }
   };
@@ -55,7 +55,7 @@ const ManageWorkspace = () => {
 
   const handleCloseClick = (workspace) => {
     if (workspace.type === 'default') {
-      toast.error('Cannot remove the default workspace');
+      toast.error('不能移除默认工作区');
       return;
     }
     setDeleteWorkspaceModal({ open: true, workspace });

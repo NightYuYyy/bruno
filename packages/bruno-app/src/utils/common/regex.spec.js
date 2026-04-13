@@ -1,6 +1,7 @@
 const { describe, it, expect } = require('@jest/globals');
 
-import { sanitizeName, validateName } from './regex';
+import '../../i18n';
+import { sanitizeName, validateName, validateNameError } from './regex';
 import { hasInvalidVariableNames } from './variables';
 
 describe('regex validators', () => {
@@ -162,6 +163,14 @@ describe('sanitizeName and validateName', () => {
       const sanitized = sanitizeName(name);
       expect(validateName(sanitized)).toBe(false);
     });
+  });
+});
+
+describe('validateNameError', () => {
+  it('returns Chinese messages for invalid filesystem names', () => {
+    expect(validateNameError('')).toBe('名称不能为空。');
+    expect(validateNameError('CON')).toBe('名称不能是系统保留设备名。');
+    expect(validateNameError('<demo')).toBe('名称中不能包含特殊字符。非法字符：“<”。');
   });
 });
 

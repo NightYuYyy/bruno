@@ -124,7 +124,7 @@ const General = () => {
           defaultLocation: newPreferences.defaultLocation
         }
       }))
-      .catch((err) => console.log(err) && toast.error('Failed to update preferences'));
+      .catch((err) => console.log(err) && toast.error('更新偏好设置失败'));
   }, [dispatch, preferences]);
 
   const handleSaveRef = useRef(handleSave);

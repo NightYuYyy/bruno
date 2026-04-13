@@ -375,7 +375,7 @@ const EnvironmentVariablesTable = ({
     // Compare without UIDs since they can be different but the actual data is the same
     const hasChanges = JSON.stringify(variablesToSave.map(stripEnvVarUid)) !== JSON.stringify(savedValues.map(stripEnvVarUid));
     if (!hasChanges) {
-      toast.error('No changes to save');
+      toast.error('没有需要保存的更改');
       return;
     }
 
@@ -390,13 +390,13 @@ const EnvironmentVariablesTable = ({
     });
 
     if (hasValidationErrors) {
-      toast.error('Please fix validation errors before saving');
+      toast.error('请先修复校验错误再保存');
       return;
     }
 
     onSave(cloneDeep(variablesToSave))
       .then(() => {
-        toast.success('Changes saved successfully');
+        toast.success('更改已保存');
         onDraftClear();
         const newValues = [
           ...variablesToSave,
@@ -414,7 +414,7 @@ const EnvironmentVariablesTable = ({
       })
       .catch((error) => {
         console.error(error);
-        toast.error('An error occurred while saving the changes');
+        toast.error('保存更改时出错');
       });
   }, [formik.values, environment.variables, onSave, onDraftClear, setIsModified]);
 

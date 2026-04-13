@@ -24,11 +24,11 @@ const CopyEnvironment = ({ environment, onClose }) => {
     onSubmit: (values) => {
       dispatch(copyGlobalEnvironment({ name: values.name, environmentUid: environment.uid }))
         .then(() => {
-          toast.success('Environment created!');
+          toast.success('环境已创建！');
           onClose();
         })
         .catch((error) => {
-          toast.error('An error occurred while creating the environment');
+          toast.error('创建环境时出错');
           console.error(error);
         });
     }

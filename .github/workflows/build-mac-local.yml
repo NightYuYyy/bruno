@@ -1,0 +1,43 @@
+name: Build macOS Local
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-mac-local:
+    name: Build macOS DMG and ZIP
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    env:
+      BRUNO_CI_UNSIGNED_MAC: 'true'
+      BRUNO_MAC_ARCHS: 'x64'
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node Dependencies
+        uses: ./.github/actions/common/setup-node-deps
+
+      - name: Build Web App
+        shell: bash
+        run: npm run build:web
+
+      - name: Build Electron App
+        shell: bash
+        run: npm run build:electron
+
+      - name: Upload macOS DMG
+        uses: actions/upload-artifact@v6
+        with:
+          name: bruno-macos-dmg
+          path: packages/bruno-electron/out/*.dmg
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload macOS ZIP
+        uses: actions/upload-artifact@v6
+        with:
+          name: bruno-macos-zip
+          path: packages/bruno-electron/out/*.zip
+          if-no-files-found: error
+          retention-days: 30

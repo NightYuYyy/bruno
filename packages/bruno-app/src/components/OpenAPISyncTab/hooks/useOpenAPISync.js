@@ -282,7 +282,7 @@ const useOpenAPISync = (collection) => {
         }
       }
 
-      toast.success('OpenAPI sync connected');
+      toast.success('OpenAPI 同步已连接');
     } catch (err) {
       console.error('Error connecting OpenAPI sync:', err);
       setError(formatIpcError(err) || 'Failed to connect');
@@ -313,10 +313,10 @@ const useOpenAPISync = (collection) => {
         dispatch(closeTabs({ tabUids: [specTab.uid] }));
       }
 
-      toast.success('OpenAPI sync disconnected');
+      toast.success('OpenAPI 同步已断开');
     } catch (err) {
       console.error('Error disconnecting sync:', err);
-      toast.error('Failed to disconnect sync');
+      toast.error('断开同步失败');
     }
   };
 
@@ -356,11 +356,11 @@ const useOpenAPISync = (collection) => {
       try {
         ({ specType } = await fetchAndValidateApiSpecFromUrl({ url: newUrl }));
       } catch {
-        toast.error('The URL does not point to a valid OpenAPI 3.x specification');
+        toast.error('该 URL 未指向有效的 OpenAPI 3.x 规范');
         throw new Error('Invalid OpenAPI specification');
       }
       if (specType !== 'openapi') {
-        toast.error('The URL does not point to a valid OpenAPI 3.x specification');
+        toast.error('该 URL 未指向有效的 OpenAPI 3.x 规范');
         throw new Error('Invalid OpenAPI specification');
       }
     }
@@ -378,12 +378,12 @@ const useOpenAPISync = (collection) => {
       });
       setSourceUrl(newUrl);
       setFileNotFound(false);
-      toast.success('Settings saved');
+      toast.success('设置已保存');
       // Re-check with new settings — pass newUrl directly to avoid stale closure
       await checkForUpdates({ sourceUrlOverride: newUrl });
     } catch (err) {
       console.error('Error saving settings:', err);
-      toast.error('Failed to save settings');
+      toast.error('保存设置失败');
     }
   };
 

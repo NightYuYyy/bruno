@@ -37,14 +37,14 @@ const CreateEnvironment = ({ onClose, onEnvironmentCreated }) => {
     onSubmit: (values) => {
       dispatch(addGlobalEnvironment({ name: values.name }))
         .then(() => {
-          toast.success('Global environment created!');
+          toast.success('全局环境已创建！');
           onClose();
           // Call the callback if provided
           if (onEnvironmentCreated) {
             onEnvironmentCreated();
           }
         })
-        .catch(() => toast.error('An error occurred while creating the environment'));
+        .catch(() => toast.error('创建环境时出错'));
     }
   });
 

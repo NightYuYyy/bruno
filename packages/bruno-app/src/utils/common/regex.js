@@ -1,3 +1,5 @@
+import i18n from 'i18next';
+
 const invalidCharacters = /[<>:"/\\|?*\x00-\x1F]/g; // replace invalid characters with hyphens
 const reservedDeviceNames = /^(CON|PRN|AUX|NUL|COM[0-9]|LPT[0-9])$/i;
 const firstCharacter = /^[^\s\-<>:"/\\|?*\x00-\x1F]/; // no space, hyphen and `invalidCharacters`
@@ -34,28 +36,28 @@ export const validateName = (name) => {
 };
 
 export const validateNameError = (name) => {
-  if (!name) return 'Name cannot be empty.';
+  if (!name) return i18n.t('VALIDATION.NAME_REQUIRED_GENERIC');
 
   if (name.length > 255) {
-    return 'Name cannot exceed 255 characters.';
+    return i18n.t('VALIDATION.NAME_MAX_255');
   }
 
   if (reservedDeviceNames.test(name)) {
-    return 'Name cannot be a reserved device name.';
+    return i18n.t('VALIDATION.NAME_RESERVED_DEVICE');
   }
 
   if (!firstCharacter.test(name[0])) {
-    return `Special characters aren't allowed in the name. Invalid character '${name[0]}'.`;
+    return i18n.t('VALIDATION.NAME_INVALID_CHARACTER', { char: name[0] });
   }
 
   for (let i = 1; i < name.length - 1; i++) {
     if (!middleCharacters.test(name[i])) {
-      return `Special characters aren't allowed in the name. Invalid character '${name[i]}'.`;
+      return i18n.t('VALIDATION.NAME_INVALID_CHARACTER', { char: name[i] });
     }
   }
 
   if (!lastCharacter.test(name[name.length - 1])) {
-    return `Special characters aren't allowed in the name. Invalid character '${name[name.length - 1]}'.`;
+    return i18n.t('VALIDATION.NAME_INVALID_CHARACTER', { char: name[name.length - 1] });
   }
 
   return '';
