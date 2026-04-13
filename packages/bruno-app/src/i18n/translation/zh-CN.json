@@ -556,6 +556,10 @@
     "ADD_COLLECTION_TO_WORKSPACE_FAILED": "将 Collection 添加到工作区失败"
   },
   "ELECTRON_MENU": {
+    "COLLECTION": "Collection",
+    "OPEN_RECENT": "最近打开",
+    "CLEAR_RECENT": "清空最近项",
+    "FORCE_QUIT": "强制退出",
     "ACTUAL_SIZE": "实际大小"
   },
   "REQUEST_TABS": {

@@ -556,6 +556,10 @@
     "ADD_COLLECTION_TO_WORKSPACE_FAILED": "Failed to add collection to workspace"
   },
   "ELECTRON_MENU": {
+    "COLLECTION": "Collection",
+    "OPEN_RECENT": "Open Recent",
+    "CLEAR_RECENT": "Clear Recent",
+    "FORCE_QUIT": "Force Quit",
     "ACTUAL_SIZE": "Actual Size"
   },
   "REQUEST_TABS": {
