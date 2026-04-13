@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IconFileImport, IconBrandGit, IconUnlink, IconX } from '@tabler/icons';
+import { useTranslation } from 'react-i18next';
 import Modal from 'components/Modal';
 import classnames from 'classnames';
 import StyledWrapper from './StyledWrapper';
@@ -17,6 +18,7 @@ const IMPORT_TABS = {
 
 const ImportCollection = ({ onClose, handleSubmit }) => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [tab, setTab] = useState(IMPORT_TABS.FILE);
@@ -37,7 +39,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
   }
 
   return (
-    <Modal size="md" title="Import Collection" hideFooter={true} handleCancel={onClose} dataTestId="import-collection-modal">
+    <Modal size="md" title={t('IMPORT_COLLECTION.TITLE')} hideFooter={true} handleCancel={onClose} dataTestId="import-collection-modal">
       <StyledWrapper className="flex flex-col h-full w-[600px] max-w-[600px]">
         <div className="flex w-full mb-6">
           <div className="flex justify-start w-full tabs">
@@ -47,7 +49,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
               data-testid="file-tab"
             >
               <IconFileImport size={18} strokeWidth={1.5} className="mr-2" />
-              File
+              {t('COMMON.FILE_TAB')}
             </div>
             <div
               className={getTabClassname(IMPORT_TABS.GITHUB)}
@@ -55,7 +57,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
               data-testid="github-tab"
             >
               <IconBrandGit size={18} strokeWidth={1.5} className="mr-2" />
-              Git Repository
+              {t('IMPORT_COLLECTION.GIT_REPOSITORY')}
             </div>
             <div
               className={getTabClassname(IMPORT_TABS.URL)}
@@ -63,7 +65,7 @@ const ImportCollection = ({ onClose, handleSubmit }) => {
               data-testid="url-tab"
             >
               <IconUnlink size={18} strokeWidth={1.5} className="mr-2" />
-              URL
+              {t('COMMON.URL')}
             </div>
           </div>
         </div>

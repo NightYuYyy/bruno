@@ -1,4 +1,5 @@
 import trim from 'lodash/trim';
+import i18n from 'i18next';
 import platform from 'platform';
 import path from './path';
 
@@ -41,9 +42,9 @@ export const isLinuxOS = () => {
 };
 
 export const getRevealInFolderLabel = () => {
-  if (isMacOS()) return 'Reveal in Finder';
-  if (isWindowsOS()) return 'Reveal in File Explorer';
-  return 'Reveal in File Manager';
+  if (isMacOS()) return i18n.t('COMMON.REVEAL_IN_FINDER');
+  if (isWindowsOS()) return i18n.t('COMMON.REVEAL_IN_FILE_EXPLORER');
+  return i18n.t('COMMON.REVEAL_IN_FILE_MANAGER');
 };
 
 export const getAppInstallDate = () => {

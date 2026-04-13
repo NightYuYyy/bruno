@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState, forwardRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
 import get from 'lodash/get';
 import path from 'utils/common/path';
 import { IconCaretDown } from '@tabler/icons';
@@ -22,13 +24,13 @@ import { DEFAULT_COLLECTION_FORMAT } from 'utils/common/constants';
 
 // Extract collection name from raw data
 const getCollectionName = (format, rawData) => {
-  if (!rawData) return 'Collection';
+  if (!rawData) return i18n.t('IMPORT_COLLECTION_LOCATION.GENERIC_COLLECTION');
 
   switch (format) {
     case 'openapi':
-      return rawData.info?.title || 'OpenAPI Collection';
+      return rawData.info?.title || i18n.t('IMPORT_COLLECTION_LOCATION.OPENAPI_COLLECTION');
     case 'postman':
-      return rawData.info?.name || rawData.collection?.info?.name || 'Postman Collection';
+      return rawData.info?.name || rawData.collection?.info?.name || i18n.t('IMPORT_COLLECTION_LOCATION.POSTMAN_COLLECTION');
     case 'insomnia':
       // For Insomnia v4 format, name is in the workspace resource
       if (rawData.resources && Array.isArray(rawData.resources)) {
@@ -38,17 +40,17 @@ const getCollectionName = (format, rawData) => {
         }
       }
       // Fallback to root name property
-      return rawData.name || 'Insomnia Collection';
+      return rawData.name || i18n.t('IMPORT_COLLECTION_LOCATION.INSOMNIA_COLLECTION');
     case 'bruno':
-      return rawData.name || 'Bruno Collection';
+      return rawData.name || i18n.t('IMPORT_COLLECTION_LOCATION.BRUNO_COLLECTION');
     case 'opencollection':
-      return rawData.info?.name || 'OpenCollection';
+      return rawData.info?.name || i18n.t('CREATE_COLLECTION.OPEN_COLLECTION_FORMAT');
     case 'wsdl':
-      return 'WSDL Collection';
+      return i18n.t('IMPORT_COLLECTION_LOCATION.WSDL_COLLECTION');
     case 'bruno-zip':
-      return rawData.collectionName || 'Bruno Collection';
+      return rawData.collectionName || i18n.t('IMPORT_COLLECTION_LOCATION.BRUNO_COLLECTION');
     default:
-      return 'Collection';
+      return i18n.t('IMPORT_COLLECTION_LOCATION.GENERIC_COLLECTION');
   }
 };
 
@@ -87,19 +89,20 @@ const convertCollection = async (format, rawData, groupingType, collectionFormat
     return collection;
   } catch (err) {
     console.error('Conversion error:', err);
-    toastError(err, 'Failed to convert collection');
+    toastError(err, i18n.t('IMPORT_COLLECTION_LOCATION.FAILED_TO_CONVERT'));
     throw err;
   }
 };
 
 const groupingOptions = [
-  { value: 'tags', label: 'Tags', description: 'Group requests by OpenAPI/Swagger tags', testId: 'grouping-option-tags' },
-  { value: 'path', label: 'Paths', description: 'Group requests by URL path structure', testId: 'grouping-option-path' }
+  { value: 'tags', label: i18n.t('COMMON.TAGS'), description: 'Group requests by OpenAPI/Swagger tags', testId: 'grouping-option-tags' },
+  { value: 'path', label: i18n.t('COMMON.PATHS'), description: 'Group requests by URL path structure', testId: 'grouping-option-path' }
 ];
 
 const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sourceUrl, filePath, rawContent }) => {
   const inputRef = useRef();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [groupingType, setGroupingType] = useState('tags');
   const [collectionFormat, setCollectionFormat] = useState(DEFAULT_COLLECTION_FORMAT);
   const isOpenAPISyncEnabled = useBetaFeature(BETA_FEATURES.OPENAPI_SYNC);
@@ -130,9 +133,9 @@ const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sour
     },
     validationSchema: Yup.object({
       collectionLocation: Yup.string()
-        .min(1, 'must be at least 1 character')
-        .max(500, 'must be 500 characters or less')
-        .required('Location is required')
+        .min(1, t('VALIDATION.LOCATION_REQUIRED'))
+        .max(500, t('VALIDATION.MAX_500_CHARACTERS'))
+        .required(t('VALIDATION.LOCATION_REQUIRED'))
     }),
     onSubmit: async (values) => {
       const convertedCollection = await convertCollection(format, rawData, groupingType, collectionFormat);
@@ -219,8 +222,8 @@ const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sour
     <StyledWrapper>
       <Modal
         size="md"
-        title="Import Collection"
-        confirmText="Import"
+        title={t('IMPORT_COLLECTION.TITLE')}
+        confirmText={t('COMMON.IMPORT')}
         handleConfirm={onSubmit}
         handleCancel={onClose}
         dataTestId="import-collection-location-modal"
@@ -228,16 +231,16 @@ const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sour
         <form className="bruno-form" onSubmit={(e) => e.preventDefault()}>
           <div>
             <label htmlFor="collectionName" className="block font-medium">
-              Name
+              {t('COMMON.NAME')}
             </label>
             <div className="mt-2">{collectionName}</div>
 
             <>
               <label htmlFor="collectionLocation" className="font-medium mt-4 flex items-center">
-                Location
+                {t('COMMON.LOCATION')}
                 <Help>
-                  <p>Bruno stores your collections on your computer's filesystem.</p>
-                  <p className="mt-2">Choose the location where you want to store this collection.</p>
+                  <p>{t('IMPORT_COLLECTION_LOCATION.FILESYSTEM_HELP_1')}</p>
+                  <p className="mt-2">{t('IMPORT_COLLECTION_LOCATION.FILESYSTEM_HELP_2')}</p>
                 </Help>
               </label>
               <input
@@ -262,21 +265,21 @@ const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sour
 
             <div className="mt-1">
               <span className="text-link cursor-pointer hover:underline" onClick={browse}>
-                Browse
+                {t('COMMON.BROWSE')}
               </span>
             </div>
 
             {!isZipImport && (
               <div className="mt-4">
                 <label htmlFor="format" className="flex items-center font-medium">
-                  File Format
+                  {t('COMMON.FILE_FORMAT')}
                   <Help width="300">
-                    <p>Choose the file format for storing requests in this collection.</p>
+                    <p>{t('IMPORT_COLLECTION_LOCATION.FILE_FORMAT_HELP_1')}</p>
                     <p className="mt-2">
-                      <strong>OpenCollection (YAML):</strong> Industry-standard YAML format (.yml files)
+                      <strong>{t('IMPORT_COLLECTION_LOCATION.FILE_FORMAT_HELP_2')}</strong>
                     </p>
                     <p className="mt-1">
-                      <strong>BRU:</strong> Bruno's native file format (.bru files)
+                      <strong>{t('IMPORT_COLLECTION_LOCATION.FILE_FORMAT_HELP_3')}</strong>
                     </p>
                   </Help>
                 </label>
@@ -287,8 +290,8 @@ const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sour
                   value={collectionFormat}
                   onChange={(e) => setCollectionFormat(e.target.value)}
                 >
-                  <option value="yml">OpenCollection (YAML)</option>
-                  <option value="bru">BRU Format (.bru)</option>
+                  <option value="yml">{t('IMPORT_COLLECTION_LOCATION.OPEN_COLLECTION_FORMAT')}</option>
+                  <option value="bru">{t('IMPORT_COLLECTION_LOCATION.BRU_FORMAT')}</option>
                 </select>
               </div>
             )}
@@ -298,10 +301,10 @@ const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sour
             <div className="mt-4 flex gap-4 items-center justify-between">
               <div>
                 <label htmlFor="groupingType" className="block font-medium">
-                  Folder arrangement
+                  {t('IMPORT_COLLECTION_LOCATION.FOLDER_ARRANGEMENT')}
                 </label>
                 <p className="text-muted text-xs mt-1 mb-2">
-                  Select whether to create folders according to the spec's paths or tags.
+                  {t('IMPORT_COLLECTION_LOCATION.FOLDER_ARRANGEMENT_DESC')}
                 </p>
               </div>
               <div className="relative">
@@ -334,12 +337,12 @@ const ImportCollectionLocation = ({ onClose, handleSubmit, rawData, format, sour
                   disabled={isSwagger2}
                   className={`checkbox ${isSwagger2 ? '' : 'cursor-pointer'}`}
                 />
-                <span className="font-medium">Check for Spec Updates</span>
+                <span className="font-medium">{t('IMPORT_COLLECTION_LOCATION.CHECK_FOR_SPEC_UPDATES')}</span>
               </label>
               <p className="text-muted text-xs mt-1">
                 {isSwagger2
-                  ? 'OpenAPI Sync is not supported for Swagger 2.0 specs.'
-                  : 'Stay notified of spec changes and sync your collection with the spec.'}
+                  ? t('IMPORT_COLLECTION_LOCATION.CHECK_FOR_SPEC_UPDATES_UNSUPPORTED')
+                  : t('IMPORT_COLLECTION_LOCATION.CHECK_FOR_SPEC_UPDATES_HELP')}
               </p>
             </div>
           )}

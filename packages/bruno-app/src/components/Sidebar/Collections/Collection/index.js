@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import classnames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { uuid } from 'utils/common';
 import filter from 'lodash/filter';
 import { useDrop, useDrag } from 'react-dnd';
@@ -60,6 +61,7 @@ import useKeybinding from 'hooks/useKeybinding';
 const EMPTY_STATE_DELAY_MS = 300;
 
 const Collection = ({ collection, searchText }) => {
+  const { t } = useTranslation();
   const isOpenAPISyncEnabled = useBetaFeature(BETA_FEATURES.OPENAPI_SYNC);
   const { dropdownContainerRef } = useSidebarAccordion();
   const [showNewFolderModal, setShowNewFolderModal] = useState(false);
@@ -331,7 +333,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'new-request',
       leftSection: IconFilePlus,
-      label: 'New Request',
+      label: t('COMMON.NEW_REQUEST'),
       onClick: () => {
         ensureCollectionIsMounted();
         setShowNewRequestModal(true);
@@ -340,7 +342,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'new-folder',
       leftSection: IconFolderPlus,
-      label: 'New Folder',
+      label: t('COMMON.NEW_FOLDER'),
       onClick: () => {
         ensureCollectionIsMounted();
         setShowNewFolderModal(true);
@@ -349,7 +351,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'run',
       leftSection: IconPlayerPlay,
-      label: 'Run',
+      label: t('COMMON.RUN'),
       onClick: () => {
         ensureCollectionIsMounted();
         handleRun();
@@ -358,7 +360,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'clone',
       leftSection: IconCopy,
-      label: 'Clone',
+      label: t('COMMON.CLONE'),
       testId: 'clone-collection',
       onClick: () => {
         setShowCloneCollectionModalOpen(true);
@@ -376,7 +378,7 @@ const Collection = ({ collection, searchText }) => {
           {
             id: 'paste',
             leftSection: IconClipboard,
-            label: 'Paste',
+            label: t('COMMON.PASTE'),
             onClick: handlePasteItem
           }
         ]
@@ -384,7 +386,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'rename',
       leftSection: IconEdit,
-      label: 'Rename',
+      label: t('COMMON.RENAME'),
       onClick: () => {
         setShowRenameCollectionModal(true);
       }
@@ -392,7 +394,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'share',
       leftSection: IconShare,
-      label: 'Share',
+      label: t('COMMON.SHARE'),
       onClick: () => {
         ensureCollectionIsMounted();
         setShowShareCollectionModal(true);
@@ -401,7 +403,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'generate-docs',
       leftSection: IconBook,
-      label: 'Generate Docs',
+      label: t('COMMON.GENERATE_DOCS'),
       onClick: () => {
         ensureCollectionIsMounted();
         setShowGenerateDocumentationModal(true);
@@ -410,7 +412,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'collapse',
       leftSection: IconFoldDown,
-      label: 'Collapse',
+      label: t('COMMON.COLLAPSE'),
       onClick: handleCollapseFullCollection
     },
     {
@@ -426,13 +428,13 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'settings',
       leftSection: IconSettings,
-      label: 'Settings',
+      label: t('COMMON.SETTINGS'),
       onClick: viewCollectionSettings
     },
     {
       id: 'terminal',
       leftSection: IconTerminal2,
-      label: 'Open in Terminal',
+      label: t('COMMON.OPEN_IN_TERMINAL'),
       onClick: async () => {
         const collectionCwd = collection.pathname;
         await openDevtoolsAndSwitchToTerminal(dispatch, collectionCwd);
@@ -441,7 +443,7 @@ const Collection = ({ collection, searchText }) => {
     {
       id: 'remove',
       leftSection: IconX,
-      label: 'Remove',
+      label: t('COMMON.REMOVE'),
       onClick: () => {
         setShowRemoveCollectionModal(true);
       }

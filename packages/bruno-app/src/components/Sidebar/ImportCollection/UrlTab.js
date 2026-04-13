@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { fetchAndValidateApiSpecFromUrl } from 'utils/importers/common';
 import { isValidUrl } from 'utils/url/index';
 import Button from 'ui/Button';
+
 const UrlTab = ({
   setIsLoading,
   handleSubmit,
   setErrorMessage
 }) => {
+  const { t } = useTranslation();
   const [urlInput, setUrlInput] = useState('');
 
   const handleUrlImport = async (event) => {
     event.preventDefault();
     if (!urlInput.trim() || !isValidUrl(urlInput.trim())) {
-      setErrorMessage('Please enter a valid URL');
+      setErrorMessage(t('IMPORT_COLLECTION.VALID_URL'));
       return;
     }
     setIsLoading(true);
     try {
       const { data, specType, rawContent } = await fetchAndValidateApiSpecFromUrl({ url: urlInput.trim() });
-      // Pass raw data for all types, include sourceUrl and rawContent for OpenAPI sync
       handleSubmit({ rawData: data, type: specType, sourceUrl: urlInput.trim(), rawContent });
     } catch (err) {
       console.error(err);
-      setErrorMessage('URL import failed. Please check the URL and try again.');
+      setErrorMessage(t('IMPORT_COLLECTION.URL_IMPORT_FAILED'));
     } finally {
       setIsLoading(false);
     }
@@ -41,7 +43,7 @@ const UrlTab = ({
             setUrlInput(e.target.value);
             setErrorMessage('');
           }}
-          placeholder="Enter URL (OpenAPI/Swagger, Postman, or Insomnia specification)"
+          placeholder={t('IMPORT_COLLECTION.URL_PLACEHOLDER')}
           className="flex-1 px-3 py-1 textbox"
         />
         <Button
@@ -52,7 +54,7 @@ const UrlTab = ({
           color="primary"
           style={{ height: '100%' }}
         >
-          Import
+          {t('COMMON.IMPORT')}
         </Button>
       </div>
     </form>

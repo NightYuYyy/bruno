@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { IconFileImport } from '@tabler/icons';
+import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { toastError } from 'utils/common/error';
 import jsyaml from 'js-yaml';
 import { isPostmanCollection } from 'utils/importers/postman-collection';
@@ -13,7 +15,6 @@ import { useTheme } from 'providers/Theme';
 const convertFileToObject = async (file) => {
   const text = await file.text();
 
-  // Handle WSDL files - return as plain text
   if (file.name.endsWith('.wsdl') || file.type === 'text/xml' || file.type === 'application/xml') {
     return text;
   }
@@ -29,7 +30,7 @@ const convertFileToObject = async (file) => {
     }
     return parsed;
   } catch {
-    throw new Error('Failed to parse the file – ensure it is valid JSON or YAML');
+    throw new Error(i18n.t('IMPORT_COLLECTION.PARSE_FILE_ERROR'));
   }
 };
 
@@ -41,6 +42,7 @@ const FileTab = ({
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef(null);
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const acceptedFileTypes = [
     '.json',
@@ -84,9 +86,9 @@ const FileTab = ({
         return;
       }
 
-      toastError(new Error('The ZIP file is not a valid Bruno collection'));
+      toastError(new Error(t('IMPORT_COLLECTION.INVALID_BRUNO_ZIP')));
     } catch (err) {
-      toastError(err, 'Import ZIP file failed');
+      toastError(err, t('IMPORT_COLLECTION.ZIP_IMPORT_FAILED'));
     } finally {
       setIsLoading(false);
     }
@@ -97,12 +99,9 @@ const FileTab = ({
     try {
       const filesData = [];
 
-      // Parse all files
       for (const file of fileArray) {
         try {
           const data = await convertFileToObject(file);
-
-          // Determine type for each file
           let type = null;
           if (isOpenApiSpec(data)) {
             type = 'openapi';
@@ -127,13 +126,12 @@ const FileTab = ({
       }
 
       if (filesData.length > 0) {
-        // Pass raw filesData to be processed in BulkImportCollectionLocation
         handleSubmit({ filesData, type: 'multiple' });
       } else {
-        throw new Error('No valid collections found in the selected files');
+        throw new Error(t('IMPORT_COLLECTION.NO_VALID_COLLECTIONS'));
       }
     } catch (err) {
-      toastError(err, 'Import multiple files failed');
+      toastError(err, t('IMPORT_COLLECTION.MULTIPLE_FILES_FAILED'));
     } finally {
       setIsLoading(false);
     }
@@ -145,11 +143,10 @@ const FileTab = ({
       const data = await convertFileToObject(file);
 
       if (!data) {
-        throw new Error('Failed to parse file content');
+        throw new Error(t('IMPORT_COLLECTION.PARSE_FILE_CONTENT_ERROR'));
       }
 
       let type = null;
-
       if (isOpenApiSpec(data)) {
         type = 'openapi';
       } else if (isWSDLCollection(data)) {
@@ -163,7 +160,7 @@ const FileTab = ({
       } else if (isBrunoCollection(data)) {
         type = 'bruno';
       } else {
-        throw new Error('Unsupported collection format');
+        throw new Error(t('IMPORT_COLLECTION.UNSUPPORTED_COLLECTION_FORMAT'));
       }
 
       if (type === 'openapi') {
@@ -174,7 +171,7 @@ const FileTab = ({
         await handleSubmit({ rawData: data, type });
       }
     } catch (err) {
-      toastError(err, 'Import collection failed');
+      toastError(err, t('IMPORT_COLLECTION.IMPORT_COLLECTION_FAILED'));
     } finally {
       setIsLoading(false);
     }
@@ -186,14 +183,13 @@ const FileTab = ({
     const fileArray = Array.from(files);
     const zipFiles = fileArray.filter((file) => file.name.endsWith('.zip'));
 
-    // If both ZIP and non-ZIP files are selected, show error
     if (zipFiles.length && (fileArray.length - zipFiles.length > 0)) {
-      setErrorMessage('Cannot mix ZIP files with other file types. Please select either a single ZIP file OR collection files (JSON/YAML)');
+      setErrorMessage(t('IMPORT_COLLECTION.ZIP_MIX_ERROR'));
       return;
     }
 
     if (zipFiles.length > 1) {
-      setErrorMessage('Multiple ZIP files selected. Please select only one ZIP file at a time for import.');
+      setErrorMessage(t('IMPORT_COLLECTION.MULTIPLE_ZIP_ERROR'));
       return;
     }
 
@@ -203,7 +199,6 @@ const FileTab = ({
     }
 
     if (fileArray.length > 1) {
-      // Process multiple non-ZIP files normally
       await handleMultipleFiles(fileArray);
     } else if (fileArray.length === 1) {
       await processFile(fileArray[0]);
@@ -241,17 +236,11 @@ const FileTab = ({
         onDrop={handleDrop}
         className={`
           border-2 border-dashed rounded-lg p-6 transition-colors duration-200
-          ${dragActive
-      ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
-      : 'border-gray-200 dark:border-gray-700'
-    }
+          ${dragActive ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20' : 'border-gray-200 dark:border-gray-700'}
         `}
       >
         <div className="flex flex-col items-center justify-center">
-          <IconFileImport
-            size={28}
-            className="text-gray-400 dark:text-gray-500 mb-3"
-          />
+          <IconFileImport size={28} className="text-gray-400 dark:text-gray-500 mb-3" />
           <input
             ref={fileInputRef}
             type="file"
@@ -261,17 +250,17 @@ const FileTab = ({
             accept={acceptedFileTypes.join(',')}
           />
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            Drop file(s) to import or{' '}
+            {t('IMPORT_COLLECTION.DROP_OR_CHOOSE_FILES')}{' '}
             <button
               className="underline cursor-pointer"
               onClick={handleBrowseFiles}
               style={{ color: theme.textLink }}
             >
-              choose file(s)
+              {t('IMPORT_COLLECTION.CHOOSE_FILES')}
             </button>
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-            Supports Bruno, OpenCollection, Postman, Insomnia, OpenAPI 3.x / Swagger 2.0, WSDL, and ZIP formats
+            {t('IMPORT_COLLECTION.SUPPORTED_FORMATS')}
           </p>
         </div>
       </div>

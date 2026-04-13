@@ -1,23 +1,27 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import translationEn from './translation/en.json';
+import translationZhCN from './translation/zh-CN.json';
 
 const resources = {
-  en: {
+  'zh-CN': {
+    translation: translationZhCN
+  },
+  'en': {
     translation: translationEn
   }
 };
 
 i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // Use "en" as the default language. "cimode" can be used to debug / show translation placeholder
-
-    ns: 'translation', // Use translation as the default Namespace that will be loaded by default
-
+    lng: 'zh-CN',
+    fallbackLng: 'en',
+    supportedLngs: ['zh-CN', 'en'],
+    ns: 'translation',
     interpolation: {
-      escapeValue: false // react already safes from xss
+      escapeValue: false
     }
   });
 
