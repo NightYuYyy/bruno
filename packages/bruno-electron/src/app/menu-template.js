@@ -3,12 +3,48 @@ const os = require('os');
 const { BrowserWindow } = require('electron');
 const { version } = require('../../package.json');
 const aboutBruno = require('./about-bruno');
-const translationZhCN = require('../../../bruno-app/src/i18n/translation/zh-CN.json');
-const translationEn = require('../../../bruno-app/src/i18n/translation/en.json');
 
 const translations = {
-  'zh-CN': translationZhCN,
-  'en': translationEn
+  'zh-CN': {
+    COMMON: {
+      OPEN_COLLECTION: '打开 Collection',
+      QUIT: '退出',
+      EDIT: '编辑',
+      VIEW: '查看',
+      ZOOM_IN: '放大',
+      ZOOM_OUT: '缩小',
+      HELP: '帮助',
+      ABOUT_BRUNO: '关于 Bruno',
+      DOCUMENTATION: '文档'
+    },
+    ELECTRON_MENU: {
+      COLLECTION: 'Collection',
+      OPEN_RECENT: '最近打开',
+      CLEAR_RECENT: '清空最近项',
+      FORCE_QUIT: '强制退出',
+      ACTUAL_SIZE: '实际大小'
+    }
+  },
+  'en': {
+    COMMON: {
+      OPEN_COLLECTION: 'Open Collection',
+      QUIT: 'Quit',
+      EDIT: 'Edit',
+      VIEW: 'View',
+      ZOOM_IN: 'Zoom In',
+      ZOOM_OUT: 'Zoom Out',
+      HELP: 'Help',
+      ABOUT_BRUNO: 'About Bruno',
+      DOCUMENTATION: 'Documentation'
+    },
+    ELECTRON_MENU: {
+      COLLECTION: 'Collection',
+      OPEN_RECENT: 'Open Recent',
+      CLEAR_RECENT: 'Clear Recent',
+      FORCE_QUIT: 'Force Quit',
+      ACTUAL_SIZE: 'Actual Size'
+    }
+  }
 };
 
 const locale = 'zh-CN';

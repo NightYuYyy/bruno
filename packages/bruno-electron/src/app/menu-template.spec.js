@@ -15,10 +15,19 @@ jest.mock('os', () => ({
 }));
 
 const template = require('./menu-template');
+const fs = require('fs');
+const path = require('path');
 
 describe('menu-template', () => {
   beforeEach(() => {
     mockEmit.mockReset();
+  });
+
+  it('does not depend on bruno-app translation source files', () => {
+    const file = path.join(__dirname, 'menu-template.js');
+    const content = fs.readFileSync(file, 'utf8');
+
+    expect(content.includes('../../../bruno-app/src/i18n/translation/')).toBe(false);
   });
 
   it('provides Chinese labels for translated native menu items', () => {
