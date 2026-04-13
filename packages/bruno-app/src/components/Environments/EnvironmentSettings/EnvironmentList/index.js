@@ -204,7 +204,7 @@ const EnvironmentList = ({
         toast.success(`Environment "${env.name}" activated`);
       })
       .catch(() => {
-        toast.error('Failed to activate environment');
+        toast.error('激活环境失败');
       });
   }, [dispatch, collection.uid]);
 
@@ -258,13 +258,13 @@ const EnvironmentList = ({
 
     dispatch(addEnvironment(newEnvName, collection.uid))
       .then(() => {
-        toast.success('Environment created!');
+        toast.success('环境已创建！');
         setIsCreatingInline(false);
         setNewEnvName('');
         setEnvNameError('');
       })
       .catch(() => {
-        toast.error('An error occurred while creating the environment');
+        toast.error('创建环境时出错');
       });
   };
 
@@ -310,7 +310,7 @@ const EnvironmentList = ({
         setEnvNameError('');
       })
       .catch(() => {
-        toast.error('An error occurred while renaming the environment');
+        toast.error('重命名环境时出错');
       });
   };
 

@@ -73,7 +73,7 @@ const EnvironmentDetails = ({ environment, setIsModified, collection, searchQuer
         setNameError('');
       })
       .catch(() => {
-        toast.error('An error occurred while renaming the environment');
+        toast.error('重命名环境时出错');
       });
   };
 

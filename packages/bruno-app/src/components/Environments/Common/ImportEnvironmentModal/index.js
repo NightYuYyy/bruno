@@ -31,13 +31,13 @@ const ImportEnvironmentModal = ({ type = 'collection', collection, onClose, onEn
       if (env.name && env.name !== 'undefined') {
         return true;
       } else {
-        toast.error('Failed to import environment: env has no name');
+        toast.error('导入环境失败：环境缺少名称');
         return false;
       }
     });
 
     if (validEnvironments.length === 0) {
-      toast.error('No valid environments found to import');
+      toast.error('未找到可导入的有效环境');
       return;
     }
 
@@ -55,7 +55,7 @@ const ImportEnvironmentModal = ({ type = 'collection', collection, onClose, onEn
 
       toast.success(`${importedCount > 1 ? `${importedCount} environments` : 'Environment'} imported successfully`);
     } catch (error) {
-      toast.error('An error occurred while importing the environment(s)');
+      toast.error('导入环境时出错');
       console.error(error);
       throw error;
     }

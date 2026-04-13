@@ -145,7 +145,7 @@ const AppTitleBar = () => {
   const handleOpenWorkspace = async () => {
     try {
       await dispatch(openWorkspaceDialog());
-      toast.success('Workspace opened successfully');
+      toast.success('工作区打开成功');
     } catch (error) {
       toast.error(error.message || 'Failed to open workspace');
     }

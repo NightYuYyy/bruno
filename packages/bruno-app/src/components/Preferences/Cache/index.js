@@ -28,7 +28,7 @@ const Cache = () => {
           ...preferences,
           cache: newCachePreferences
         })
-      ).catch(() => toast.error('Failed to update cache preferences'));
+      ).catch(() => toast.error('更新缓存偏好设置失败'));
     },
     [dispatch, preferences]
   );
@@ -82,8 +82,8 @@ const Cache = () => {
 
   const handleResetCache = () => {
     dispatch(clearHttpHttpsAgentCache())
-      .then(() => toast.success('ssl session cache cleared'))
-      .catch(() => toast.error('Failed to clear ssl session cache'));
+      .then(() => toast.success('SSL 会话缓存已清除'))
+      .catch(() => toast.error('清除 SSL 会话缓存失败'));
   };
 
   return (

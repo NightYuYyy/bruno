@@ -11,10 +11,10 @@ const DeleteEnvironment = ({ onClose, environment, collection }) => {
   const onConfirm = () => {
     dispatch(deleteEnvironment(environment.uid, collection.uid))
       .then(() => {
-        toast.success('Environment deleted successfully');
+        toast.success('环境删除成功');
         onClose();
       })
-      .catch(() => toast.error('An error occurred while deleting the environment'));
+      .catch(() => toast.error('删除环境时出错'));
   };
 
   return (

@@ -240,7 +240,7 @@ const CollectionHeader = ({ collection, isScratchCollection }) => {
   const handleCloseWorkspaceClick = () => {
     workspaceActionsRef.current?.hide();
     if (currentWorkspace?.type === 'default') {
-      toast.error('Cannot close the default workspace');
+      toast.error('不能关闭默认工作区');
       return;
     }
     setCloseWorkspaceModalOpen(true);
@@ -251,7 +251,7 @@ const CollectionHeader = ({ collection, isScratchCollection }) => {
     const pathname = currentWorkspace?.pathname;
     if (pathname) {
       dispatch(showInFolder(pathname)).catch(() => {
-        toast.error('Error opening the folder');
+        toast.error('打开文件夹时出错');
       });
     }
   };
@@ -264,7 +264,7 @@ const CollectionHeader = ({ collection, isScratchCollection }) => {
     dispatch(exportWorkspaceAction(uid))
       .then((result) => {
         if (!result?.canceled) {
-          toast.success('Workspace exported successfully');
+          toast.success('工作区导出成功');
         }
       })
       .catch((error) => {
@@ -320,7 +320,7 @@ const CollectionHeader = ({ collection, isScratchCollection }) => {
           setIsRenamingWorkspace(false);
           setWorkspaceNameInput('');
           setWorkspaceNameError('');
-          toast.success('Workspace created!');
+          toast.success('工作区已创建！');
         })
         .catch((err) => {
           toast.error(err?.message || 'An error occurred while creating the workspace');
@@ -331,7 +331,7 @@ const CollectionHeader = ({ collection, isScratchCollection }) => {
     } else {
       dispatch(renameWorkspaceAction(uid, workspaceNameInput))
         .then(() => {
-          toast.success('Workspace renamed!');
+          toast.success('工作区重命名成功！');
           setIsRenamingWorkspace(false);
           setWorkspaceNameInput('');
           setWorkspaceNameError('');

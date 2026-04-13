@@ -69,12 +69,12 @@ const WsQueryUrl = ({ item, collection, handleRun }) => {
     e && e.stopPropagation();
     closeWsConnection(item.uid)
       .then(() => {
-        notify && toast.success('WebSocket connection closed');
+        notify && toast.success('WebSocket 连接已关闭');
         setConnectionStatus('disconnected');
       })
       .catch((err) => {
         console.error('Failed to close WebSocket connection:', err);
-        notify && toast.error('Failed to close WebSocket connection');
+        notify && toast.error('关闭 WebSocket 连接失败');
       });
   };
 
@@ -93,7 +93,7 @@ const WsQueryUrl = ({ item, collection, handleRun }) => {
   const handleRunClick = async (e) => {
     e.stopPropagation();
     if (!url) {
-      toast.error('Please enter a valid WebSocket URL');
+      toast.error('请输入有效的 WebSocket URL');
       return;
     }
     handleRun(e);

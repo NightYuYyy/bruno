@@ -286,17 +286,17 @@ const RequestTabPanel = () => {
     const request = item.draft ? item.draft.request : item.request;
 
     if (isGrpcRequest && !request.url) {
-      toast.error('Please enter a valid gRPC server URL');
+      toast.error('请输入有效的 gRPC 服务器 URL');
       return;
     }
 
     if (isGrpcRequest && !request.method) {
-      toast.error('Please select a gRPC method');
+      toast.error('请选择一个 gRPC 方法');
       return;
     }
 
     if (isWsRequest && !request.url) {
-      toast.error('Please enter a valid WebSocket URL');
+      toast.error('请输入有效的 WebSocket URL');
       return;
     }
     if (item.requestState !== 'sending' && item.requestState !== 'queued') {

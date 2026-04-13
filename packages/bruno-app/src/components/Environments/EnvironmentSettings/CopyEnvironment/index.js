@@ -24,10 +24,10 @@ const CopyEnvironment = ({ collection, environment, onClose }) => {
     onSubmit: (values) => {
       dispatch(copyEnvironment(values.name, environment.uid, collection.uid))
         .then(() => {
-          toast.success('Environment created in collection');
+          toast.success('环境已在 Collection 中创建');
           onClose();
         })
-        .catch(() => toast.error('An error occurred while created the environment'));
+        .catch(() => toast.error('创建环境时出错'));
     }
   });
 
