@@ -1,0 +1,40 @@
+name: Build Windows Local
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-win-local:
+    name: Build Windows x64 Installer
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node Dependencies
+        uses: ./.github/actions/common/setup-node-deps
+
+      - name: Build Web App
+        shell: bash
+        run: npm run build:web
+
+      - name: Build Electron App
+        shell: bash
+        run: npm run build:electron
+
+      - name: Upload Windows Installer
+        uses: actions/upload-artifact@v6
+        with:
+          name: bruno-windows-x64-installer
+          path: packages/bruno-electron/out/*.exe
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload Windows Unpacked Build
+        uses: actions/upload-artifact@v6
+        with:
+          name: bruno-windows-x64-unpacked
+          path: packages/bruno-electron/out/win-unpacked/**
+          if-no-files-found: error
+          retention-days: 30

@@ -1,5 +1,11 @@
 require('dotenv').config({ path: process.env.DOTENV_PATH });
 
+const isUnsignedMacBuild = process.env.BRUNO_CI_UNSIGNED_MAC === 'true';
+const macTargetArchs = (process.env.BRUNO_MAC_ARCHS || 'x64')
+  .split(',')
+  .map((arch) => arch.trim())
+  .filter(Boolean);
+
 const config = {
   appId: 'com.usebruno.app',
   productName: 'Bruno',
@@ -15,29 +21,40 @@ const config = {
     }
   ],
   files: ['**/*'],
-  afterSign: 'notarize.js',
+  afterSign: isUnsignedMacBuild ? undefined : 'notarize.js',
   mac: {
     artifactName: '${name}_${version}_${arch}_${os}.${ext}',
     category: 'public.app-category.developer-tools',
-    target: [
-      {
-        target: 'pkg',
-        arch: ['x64', 'arm64']
-      },
-      {
-        target: 'dmg',
-        arch: ['x64', 'arm64']
-      },
-      {
-        target: 'zip',
-        arch: ['x64', 'arm64']
-      }
-    ],
+    target: isUnsignedMacBuild
+      ? [
+          {
+            target: 'dmg',
+            arch: macTargetArchs
+          },
+          {
+            target: 'zip',
+            arch: macTargetArchs
+          }
+        ]
+      : [
+          {
+            target: 'pkg',
+            arch: ['x64', 'arm64']
+          },
+          {
+            target: 'dmg',
+            arch: ['x64', 'arm64']
+          },
+          {
+            target: 'zip',
+            arch: ['x64', 'arm64']
+          }
+        ],
     icon: 'resources/icons/mac/icon.icns',
-    hardenedRuntime: true,
-    identity: 'Anoop MD (W7LPPWA48L)',
-    entitlements: 'resources/entitlements.mac.plist',
-    entitlementsInherit: 'resources/entitlements.mac.plist',
+    hardenedRuntime: !isUnsignedMacBuild,
+    identity: isUnsignedMacBuild ? null : 'Anoop MD (W7LPPWA48L)',
+    entitlements: isUnsignedMacBuild ? undefined : 'resources/entitlements.mac.plist',
+    entitlementsInherit: isUnsignedMacBuild ? undefined : 'resources/entitlements.mac.plist',
     notarize: false,
     protocols: [
       {
